@@ -1,0 +1,25 @@
+.services {
+    padding: 2rem;
+  }
+  
+  .services h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1.5rem;
+  }
+  
+  .service-card {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 calc(30% - 1rem);
+  }
+  

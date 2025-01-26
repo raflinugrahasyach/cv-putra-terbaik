@@ -1,0 +1,8 @@
+# robots.txt for https://www.cvputraterbaik.com/
+
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Allow: /
+
+Sitemap: https://www.cvputraterbaik.com/sitemap.xml

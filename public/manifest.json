@@ -1,0 +1,21 @@
+{
+  "short_name": "CVPutra",
+  "name": "CV Putra Terbaik - Solusi Keamanan Terpercaya",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fdd835",
+  "background_color": "#ffffff",
+  "description": "CV Putra Terbaik menyediakan solusi keamanan terpercaya dengan teknologi terkini untuk mendukung efisiensi dan produktivitas bisnis Anda."
+}

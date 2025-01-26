@@ -1,0 +1,144 @@
+/* src/style.css */
+
+/* Reset default margin and padding */
+
+/* src/GlobalStyles.css */
+
+/* Reset default margin and padding */
+/* src/GlobalStyles.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  body {
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 16px; /* Meningkatkan ukuran font dasar */
+    line-height: 1.6;
+  }
+  
+  /* Global link styling */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+
+  
+  body {
+    background-color: #f8f8f8;
+  }
+  
+  nav {
+    background-color: #fdd835;
+    padding: 1rem;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+  }
+  
+  nav ul li {
+    margin: 0 1rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  header {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  header button {
+    background-color: #fdd835;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .section {
+    padding: 2rem;
+    background-color: #fff;
+    margin-bottom: 1rem;
+  }
+  
+  .section h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .section p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .footer {
+    background-color: #fdd835;
+    padding: 1rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #fff;
+    margin-top: 1rem;
+  }
+  
+  .form-container input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-container button {
+    padding: 0.5rem 1rem;
+    background-color: #fdd835;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .form-container p {
+    margin-top: 1rem;
+    color: #333;
+  }
+  
+  .user-info {
+    margin: 1rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  

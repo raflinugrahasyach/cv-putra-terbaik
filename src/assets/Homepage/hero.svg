@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="168.204mm" height="94.615mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 8116.68 4565.63"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:none}
+    .fil0 {fill:black}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+   </clipPath>
+    <clipPath id="id1">
+     <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+    </clipPath>
+     <clipPath id="id2">
+     </clipPath>
+     <clipPath id="id3">
+      <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+     </clipPath>
+     <clipPath id="id4">
+      <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+     </clipPath>
+     <clipPath id="id5">
+      <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+     </clipPath>
+     <clipPath id="id6">
+      <path d="M4449.76 0l3666.92 0 0 4565.63 -3666.92 0 0 -4565.63z"/>
+     </clipPath>
+     <clipPath id="id7">
+      <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+     </clipPath>
+    <clipPath id="id8">
+     <path d="M-0 0l8116.68 0 0 4565.63 -8116.68 0 0 -4565.63z"/>
+    </clipPath>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+  </g>
+  <g style="clip-path:url(#id0)">
+   <g>
+    <polygon class="fil0" points="8315.38,-290.01 8315.38,4855.65 -198.7,4855.65 -198.7,-290.01 "/>
+   </g>
+   <g style="clip-path:url(#id1)">
+    <g id="_2366720082128">
+    </g>
+    <g style="clip-path:url(#id2)">
+     <image x="1531.22" y="-10045.03" width="9283.17" height="6649.45" xlink:href="Background_Homescreen_Images\Background_Homescreen_ImgID1.png"/>
+    </g>
+    <g style="clip-path:url(#id3)">
+    </g>
+    <g style="clip-path:url(#id4)">
+     <image x="-421.48" y="-461.46" width="10372.54" height="7437.2" xlink:href="Background_Homescreen_Images\Background_Homescreen_ImgID2.png"/>
+    </g>
+    <g style="clip-path:url(#id5)">
+    </g>
+    <g style="clip-path:url(#id6)">
+     <image id="Elemen_x0020_Toko_x0020_2.png" x="4449.76" y="-336.48" width="7324.26" height="7324.26" xlink:href="Background_Homescreen_Images\Background_Homescreen_ImgID3.png"/>
+    </g>
+    <g style="clip-path:url(#id7)">
+    </g>
+   </g>
+   <g style="clip-path:url(#id8)">
+    <polygon class="fil1" points="8315.38,-290.01 8315.38,4855.65 -198.7,4855.65 -198.7,-290.01 "/>
+   </g>
+  </g>
+  <polygon class="fil1" points="-0,0 8116.68,0 8116.68,4565.63 -0,4565.63 "/>
+ </g>
+</svg>

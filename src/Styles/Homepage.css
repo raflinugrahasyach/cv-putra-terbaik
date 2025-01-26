@@ -1,0 +1,805 @@
+/* ===========================================
+   1. Gaya Default (Mobile-First)
+=========================================== */
+
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.header {
+  background: url('../assets/Homepage/Homepage-Header.png') no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out; /* Animasi untuk header */
+}
+
+.header-content {
+  max-width: 600px;
+  text-align: center;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  animation: slideInDown 1s ease-out; /* Animasi untuk h1 */
+}
+
+.btn-primary {
+  background-color: transparent; /* Background transparan */
+  color: rgb(255, 255, 255); /* Text putih */
+  padding: 0.5rem 1rem;
+  border: 2px solid white; /* Border putih */
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  animation: bounceIn 1.5s; /* Animasi untuk button */
+}
+
+.btn-primary:hover {
+  background-color: #fdd835; /* Background kuning saat hover */
+  color: #333; /* Text hitam saat hover */
+  transform: scale(1.05);
+}
+
+.section {
+  padding: 2rem;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  animation: fadeIn 1.5s ease-in-out; /* Animasi untuk section */
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+  animation: slideInLeft 1s ease-out; /* Animasi untuk h2 */
+}
+
+.section p {
+  font-size: 1rem;
+  color: #555;
+  animation: slideInRight 1s ease-out; /* Animasi untuk p */
+}
+
+.section-intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-intro-content .text-content {
+  flex: 1;
+  padding-right: 1rem;
+  animation: fadeInLeft 1.5s ease-in-out; /* Animasi untuk text content */
+}
+
+.section-intro-content .image-content {
+  background-image: url('../assets/Homepage/gambar-cv-ai.webp');
+  flex: 1;
+  background-size: contain;
+  background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+  background-position: center; /* Memastikan posisi gambar di tengah */
+  height: 300px; /* Sesuaikan tinggi gambar sesuai kebutuhan */
+  animation: fadeInRight 1.5s ease-in-out; /* Animasi untuk image content */
+}
+
+/* Section Services */
+.services {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Default: 1 kolom untuk mobile */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Service Card */
+.service-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-image, .project-image {
+  width: 100%; /* Memastikan gambar memenuhi lebar container */
+  height: 356px; /* Tinggi gambar dengan rasio 9:16 */
+  object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+  border-bottom: 1px solid #ddd; /* Garis bawah untuk estetika */
+  border-radius: 8px 8px 0 0; /* Memberikan border melengkung di bagian atas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Menambahkan efek hover */
+}
+
+/* Hover Effect */
+.service-image:hover, .project-image:hover {
+  transform: scale(1.05); /* Membesarkan gambar sedikit saat hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan saat hover */
+}
+
+.service-info {
+  padding: 1rem;
+}
+
+.service-info h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.service-info p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.btn-secondary {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* Section Contact */
+.section-contact {
+  background-color: #f8f9fa;
+  padding: 2rem;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+/* Contact Info Section */
+.contact-info {
+  flex: 1 1 40%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center; /* Menyelaraskan logo dan teks secara vertikal */
+  gap: 1rem; /* Jarak antara logo dan teks */
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  width: 40px; /* Lebar ikon */
+  height: 40px; /* Tinggi ikon */
+  object-fit: contain;
+}
+
+.contact-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.contact-details a {
+  color: #fdd835;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Map */
+.contact-map {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Rasio aspek 16:9 (9/16 = 0.5625) */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+.contact-map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.contact-form {
+  flex: 1 1 45%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form .consent {
+  display: flex;
+  align-items: flex-start; /* Menyelaraskan ke atas untuk kotak centang */
+  gap: 0.5rem; /* Jarak antara checkbox dan teks */
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.contact-form .consent input[type="checkbox"] {
+  margin-top: 0.2rem; /* Menyesuaikan posisi checkbox agar selaras dengan teks */
+  cursor: pointer; /* Mengubah kursor menjadi pointer saat hover */
+}
+
+.contact-form .consent label {
+  line-height: 1.2; /* Menjaga jarak baris teks */
+  cursor: pointer; /* Memudahkan klik pada label */
+}
+
+.contact-form button {
+  background-color: #fdd835;
+  color: #333;
+  padding: 0.75rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #fbc02d;
+  transform: scale(1.05);
+}
+
+.contact-icon {
+  width: 40px; /* Atur lebar logo sesuai standar */
+  height: 40px; /* Pastikan tinggi proporsional */
+  margin-right: 1rem; /* Jarak antara logo dan teks */
+  object-fit: contain;
+  display: inline-block; /* Menyelaraskan dengan teks */
+}
+
+/* ===========================================
+   2. Gaya untuk HP (Mobile)
+=========================================== */
+
+/* Animasi */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+      transform: translateY(-100%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+      opacity: 0;
+      transform: translateX(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0%, 20%, 40%, 60%, 80%, 100% {
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+      opacity: 0;
+      transform: scale(0.3);
+  }
+  20% {
+      transform: scale(1.1);
+  }
+  40% {
+      transform: scale(0.9);
+  }
+  60% {
+      opacity: 1;
+      transform: scale(1.03);
+  }
+  80% {
+      transform: scale(0.97);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+/* Logo WA Section */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.floating-whatsapp a {
+  display: inline-block;
+}
+
+.whatsapp-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ===========================================
+   3. Gaya untuk Tablet
+=========================================== */
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px) {
+  /* Header */
+  .header {
+      padding: 1.5rem 1rem;
+      height: 70vh; /* Sesuaikan jika diperlukan */
+  }
+
+  .header-content h1 {
+      font-size: 2rem;
+  }
+
+  .section-intro-content {
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+  }
+
+  .image-content {
+      width: 50%;
+      height: 300px;
+      margin-bottom: 0;
+  }
+
+  .text-content {
+      width: 50%;
+      text-align: left;
+      padding-left: 1rem;
+  }
+
+  .services {
+      grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk tablet */
+      justify-content: space-around;
+  }
+
+  /* Remove conflicting styles */
+  .service-card {
+      /* Remove width: 45%; jika tidak diperlukan */
+      /* width: 45%; */
+  }
+
+  /* Projects */
+  .projects {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact Wrapper */
+  .contact-wrapper {
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .contact-info,
+  .contact-form {
+      width: 45%;
+  }
+
+  /* Gaya tambahan jika diperlukan */
+}
+
+/* ===========================================
+   4. Gaya untuk HP (Mobile) - Perbaikan
+=========================================== */
+
+/* Responsive untuk Mobile */
+@media (max-width: 480px) {
+  /* Header */
+  .header {
+      height: 66vh; /* Mengurangi tinggi header untuk menyimpan ruang */
+  }
+
+  .header-content {
+      margin-top: 20%;
+      margin-bottom: 10%;
+      padding: 2rem;
+  }
+
+  .header-content h1 {
+      font-size: 1.6rem; /* Menyesuaikan ukuran font untuk keterbacaan */
+      line-height: 1.5;
+      font-family: 'Montserrat', sans-serif; /* Mengubah font khusus untuk judul di mobile */
+  }
+
+  .btn-primary {
+      font-size: 0.9rem; /* Mengurangi ukuran font tombol */
+      padding: 0.6rem 1rem; /* Menyesuaikan padding tombol */
+      margin-top: 1rem; /* Menambah jarak atas tombol */
+      font-family: 'Montserrat', sans-serif; /* Mengubah font tombol di mobile */
+  }
+
+  /* Section Intro */
+  .section-intro-content {
+      flex-direction: column; /* Mengubah layout menjadi kolom vertikal */
+      align-items: center;
+      text-align: center;
+  }
+
+  .section-intro-content .text-content {
+      padding-right: 0;
+      padding-bottom: 1rem; /* Menambah jarak bawah teks */
+      font-family: 'Tahoma', sans-serif; /* Mengubah font teks intro di mobile */
+  }
+
+  .section-intro-content .image-content {
+      width: 100%;
+      height: 200px; /* Mengurangi tinggi gambar untuk layar kecil */
+      background-size: cover; /* Mengisi area gambar dengan baik */
+      background-image: url('../assets/Homepage/gambar-cv-ai.webp'); /* Menambahkan gambar */
+      background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+      background-position: center; /* Memastikan posisi gambar di tengah */
+      animation: fadeInRight 1.5s ease-in-out; /* Animasi untuk image content */
+      order: -1; /* Memastikan gambar berada di atas teks */
+  }
+
+  /* Menyesuaikan ukuran font untuk h2 dan p di mobile */
+  .section-intro-content h2 {
+      font-size: 1.5rem; /* Sesuaikan sesuai kebutuhan */
+  }
+
+  .section-intro-content p {
+      font-size: 1rem; /* Sesuaikan sesuai kebutuhan */
+  }
+
+  /* Services */
+  .services {
+      grid-template-columns: 1fr; /* Mengubah menjadi 1 kolom */
+      gap: 1rem; /* Menambah jarak antar elemen */
+      padding: 0 1rem; /* Menambah padding kiri-kanan */
+  }
+
+  .service-card {
+      width: 100%; /* Memastikan kartu layanan memenuhi lebar layar */
+      margin: 0.5rem 0; /* Menambah margin atas dan bawah */
+  }
+
+  .service-image {
+      height: 200px; /* Menyesuaikan tinggi gambar */
+      object-fit: cover; /* Memastikan gambar tetap proporsional */
+  }
+
+  .service-info {
+      padding: 0.8rem; /* Mengurangi padding untuk ruang yang lebih efisien */
+      font-family: 'Georgia', serif; /* Mengubah font info layanan di mobile */
+  }
+
+  .service-info h3 {
+      font-size: 1.1rem; /* Menyesuaikan ukuran font */
+  }
+
+  .service-info p {
+      font-size: 0.9rem; /* Menyesuaikan ukuran font */
+  }
+
+  /* Projects */
+  .projects {
+      grid-template-columns: 1fr; /* Mengubah menjadi 1 kolom */
+      padding: 0 1rem; /* Menambah padding kiri-kanan */
+  }
+
+  .project-card {
+      margin-bottom: 1.5rem; /* Menambah jarak antar proyek */
+  }
+
+  .project-image {
+      height: 200px; /* Menyesuaikan tinggi gambar */
+      object-fit: cover; /* Memastikan gambar tetap proporsional */
+  }
+
+  .project-info {
+      padding: 0.8rem; /* Mengurangi padding */
+      font-family: 'Courier New', monospace; /* Mengubah font info proyek di mobile */
+  }
+
+  .project-info h3 {
+      font-size: 1.1rem; /* Menyesuaikan ukuran font */
+  }
+
+  .project-info p {
+      font-size: 0.9rem; /* Menyesuaikan ukuran font */
+  }
+
+  /* Contact Section */
+  .section-contact {
+      padding: 1rem; /* Mengurangi padding */
+      font-family: 'Lucida Sans', sans-serif; /* Mengubah font kontak di mobile */
+  }
+
+  .contact-wrapper {
+      flex-direction: column; /* Menyusun ulang menjadi kolom tunggal */
+      align-items: center;
+  }
+
+  .contact-info,
+  .contact-form {
+      width: 100%; /* Memastikan lebar penuh */
+      margin-bottom: 1.5rem; /* Menambah jarak bawah */
+      padding: 1rem; /* Menyesuaikan padding */
+  }
+
+  .contact-info {
+      padding: 1rem; /* Mengurangi padding */
+  }
+
+  .contact-item {
+      flex-direction: column; /* Mengubah layout menjadi kolom vertikal */
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem; /* Mengurangi jarak antar elemen */
+      margin-bottom: 1rem; /* Mengurangi margin bawah */
+  }
+
+  .contact-item p {
+      font-size: 0.9rem; /* Menyesuaikan ukuran font */
+  }
+
+  .contact-form h2 {
+      font-size: 1.5rem; /* Menyesuaikan ukuran font */
+      margin-bottom: 0.8rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+      padding: 0.6rem; /* Mengurangi padding */
+      font-size: 0.9rem; /* Menyesuaikan ukuran font */
+      font-family: 'Tahoma', sans-serif; /* Mengubah font form di mobile */
+  }
+
+  .contact-form .consent {
+      font-size: 0.8rem; /* Menyesuaikan ukuran font */
+  }
+
+  .contact-form button {
+      padding: 0.7rem; /* Menyesuaikan padding tombol */
+      font-size: 0.9rem; /* Menyesuaikan ukuran font tombol */
+  }
+
+  /* Floating WhatsApp */
+  .whatsapp-icon {
+      width: 45px; /* Menyesuaikan ukuran ikon */
+      height: 45px;
+  }
+
+  /* Logo WA Positioning */
+  .floating-whatsapp {
+      bottom: 15px; /* Menyesuaikan jarak dari bawah */
+      right: 15px; /* Menyesuaikan jarak dari kanan */
+  }
+}
+
+/* ===========================================
+   5. Gaya Tambahan untuk Laptop/Desktop (Layar Lebar)
+=========================================== */
+
+/* Tambahan untuk memastikan tampilan optimal pada layar sangat lebar */
+@media (min-width: 1025px) {
+  .header-content {
+      max-width: 1400px;
+  }
+
+  .services {
+      grid-template-columns: repeat(4, 1fr); /* 4 kolom untuk desktop */
+      justify-content: space-between;
+  }
+
+  .projects {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===========================================
+   6. Gaya untuk Proyek Section (Desktop)
+=========================================== */
+
+/* Proyek Section */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Membagi menjadi 3 kolom */
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 0 2rem; /* Menyesuaikan jarak kiri-kanan dengan section services */
+}
+
+.project-card {
+  background-color: #f5f5dc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-info {
+  padding: 1rem;
+}
+
+.project-info h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.project-info p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsif untuk Proyek Section */
+@media (max-width: 1024px) {
+  .projects {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+      grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================================
+   7. Gaya untuk Logo WA (Umum)
+=========================================== */
+
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.floating-whatsapp a {
+  display: inline-block;
+}
+
+.whatsapp-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
