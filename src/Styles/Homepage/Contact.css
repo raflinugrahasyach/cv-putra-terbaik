@@ -1,0 +1,321 @@
+/* src/Styles/Homepage/Contact.css */
+
+/* Section Contact */
+.section-contact {
+    padding: 80px 20px;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    /* Animasi fade saat section muncul */
+    animation: fadeIn 1.5s ease-in-out;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Kelas tambahan untuk memicu animasi fade saat ditampilkan secara kondisional */
+.fade {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Dekorasi judul Section Contact (HUBUNGI KAMI) */
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #fdd835, #fbc02d);
+    border-radius: 2px;
+}
+
+.contact-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.contact-info,
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Dekorasi judul Kontak */
+.contact-title::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #fdd835, #fbc02d);
+    border-radius: 2px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Tambahan untuk link */
+    color: inherit; /* Tambahan untuk link */
+    cursor: pointer; /* Menunjukkan area bisa diklik */
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: #fdd835;
+    color: inherit; /* Tetap pertahankan warna saat hover */
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Mencegah icon mengecil */
+}
+
+.contact-item:hover .contact-icon {
+    background: #fdd835;
+}
+
+.contact-item a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #fdd835;
+}
+
+.contact-map {
+    margin-top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Dekorasi judul Formulir Kontak */
+.contact-form h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #fdd835, #fbc02d);
+    border-radius: 2px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #fdd835;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(253, 216, 53, 0.1);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.consent input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%);
+    color: #333;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(253, 216, 53, 0.3);
+}
+
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.whatsapp-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries untuk Contact */
+@media (max-width: 1024px) {
+    .contact-wrapper {
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .contact-info,
+    .contact-form {
+      padding: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-contact {
+      padding: 40px 15px;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    .contact-wrapper {
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    .contact-info,
+    .contact-form {
+      padding: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px 14px;
+      font-size: 0.95rem;
+    }
+    .btn-submit {
+      padding: 12px;
+      font-size: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .section-title {
+      font-size: 1.8rem;
+    }
+    .contact-title,
+    .contact-form h2 {
+      font-size: 1.4rem;
+    }
+    .contact-info,
+    .contact-form {
+      padding: 15px;
+    }
+    .contact-item {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+    .contact-icon {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+    .floating-whatsapp {
+      bottom: 20px;
+      right: 20px;
+    }
+    .whatsapp-icon {
+      width: 50px;
+      height: 50px;
+    }
+}
+
+/* Print Styles untuk Contact */
+@media print {
+    .floating-whatsapp,
+    .btn-submit,
+    .contact-form {
+      display: none;
+    }
+    .section-contact {
+      background: none;
+      border-bottom: 1px solid #ddd;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

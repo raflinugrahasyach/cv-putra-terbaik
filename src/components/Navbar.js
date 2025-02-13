@@ -1,6 +1,6 @@
 // src/components/Navbar.js
 import React, { useState } from 'react';
-import { scroller } from 'react-scroll'; 
+import { scroller } from 'react-scroll';
 import { Link, useLocation } from 'react-router-dom';
 import '../Styles/Navbar.css';
 
@@ -10,28 +10,55 @@ const Navbar = () => {
 
   const toggleMenu = () => setMenuActive(!menuActive);
 
-  // SERVICES: jika di homepage, scroll; kalau tidak, redirect ke /#services-section
-  const handleServicesClick = (e) => {
-    e.preventDefault(); 
+  // Handler untuk tombol Home
+  const handleHomeClick = (e) => {
+    e.preventDefault();
     setMenuActive(false);
-
     if (location.pathname === '/') {
-      scroller.scrollTo('services-section', {
+      // Jika di homepage, scroll ke atas dengan animasi
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      // Jika di halaman lain, navigasi ke homepage
+      window.location.href = '/';
+    }
+  };
+
+  // PRODUCTS: jika di homepage, scroll; kalau tidak, redirect ke /#products-section
+  const handleProductsClick = (e) => {
+    e.preventDefault();
+    setMenuActive(false);
+    if (location.pathname === '/') {
+      scroller.scrollTo('products-section', {
         smooth: true,
         duration: 700,
         offset: -70,
       });
     } else {
-      // Trigger homepage + hash => Homepage.js useEffect => scroll
-      window.location.href = '/#services-section';
+      window.location.href = '/#products-section';
     }
   };
 
-  // CONTACT US: jika di homepage, scroll; kalau tidak, redirect ke /#contact-section
+  const handleProjectsClick = (e) => {
+    e.preventDefault();
+    setMenuActive(false);
+    if (location.pathname === '/projects') {
+      // Jika sudah di halaman projects, scroll ke atas dengan animasi
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      // Jika di halaman lain, navigasi ke projects
+      window.location.href = '/projects';
+    }
+  };
+
   const handleContactClick = (e) => {
     e.preventDefault();
     setMenuActive(false);
-
     if (location.pathname === '/') {
       scroller.scrollTo('contact-section', {
         smooth: true,
@@ -39,52 +66,56 @@ const Navbar = () => {
         offset: -70,
       });
     } else {
-      // Trigger homepage + hash => Homepage.js useEffect => scroll
-      window.location.href = '/#contact-section'; 
+      window.location.href = '/#contact-section';
     }
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        
-        {/* LOGO */}
         <div className="navbar-logo">
-          <Link to="/" className="logo-text">
+          <Link to="/" onClick={handleHomeClick} className="logo-text">
             CV PUTRA TERBAIK
           </Link>
         </div>
-
         <ul className={`navbar-menu ${menuActive ? 'active' : ''}`}>
-          {/* HOME */}
           <li>
-            <Link to="/" onClick={() => setMenuActive(false)}>
+            <Link to="/" onClick={handleHomeClick}>
               HOME
             </Link>
           </li>
-
-          {/* ABOUT US => route /about (halaman lain) */}
           <li>
-            <Link to="/about" onClick={() => setMenuActive(false)}>
+            <Link to="/#products-section" onClick={handleProductsClick}>
+              PRODUCTS
+            </Link>
+          </li>
+          <li>
+            <Link to="/projects" onClick={handleProjectsClick}>
+              PROJECTS
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                setMenuActive(false);
+                if (location.pathname === '/about') {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
+                } else {
+                  window.location.href = '/about';
+                }
+              }}
+            >
               ABOUT US
             </Link>
           </li>
-
-          {/* SERVICES => scroll di homepage, atau /#services-section */}
           <li>
-            <Link 
-              to="/#services-section" 
-              onClick={handleServicesClick}
-            >
-              SERVICES
-            </Link>
-          </li>
-
-          {/* CONTACT US => scroll di homepage, atau /#contact-section; 
-              plus pakai className="btn-contact" agar style background kuning */}
-          <li>
-            <Link 
-              to="/#contact-section" 
+            <Link
+              to="/#contact-section"
               className="btn-contact"
               onClick={handleContactClick}
             >
@@ -92,8 +123,6 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-
-        {/* Toggle Menu (Mobile) */}
         <div className="navbar-toggle" onClick={toggleMenu}>
           <span>&#9776;</span>
         </div>

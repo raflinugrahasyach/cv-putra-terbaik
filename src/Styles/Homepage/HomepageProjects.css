@@ -1,0 +1,170 @@
+  /* src/Styles/Homepage/HomepageProjects.css */
+
+  /* Section Projects di Homepage dengan prefix "hp-" */
+
+  /* Header Section */
+  .hp-section-projects {
+    padding: 2rem 40px;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .hp-projects-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  /* Header utama menggunakan h1 */
+  .hp-projects-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Subheader di bawah header */
+  .hp-projects-subheader {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  /* Garis kuning (pseudo-element) pada header */
+  .hp-projects-header p::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #fdd835, #fbc02d);
+    transform: translateX(-50%);
+    animation: lineExpand 1s ease forwards 0.5s;
+  }
+
+  .hp-projects-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hp-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+  }
+
+  .hp-project-item {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+  }
+
+  .hp-project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .hp-project-content {
+    padding: 25px;
+    position: relative;
+    background: white;
+  }
+
+  .hp-project-badge {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #4caf50;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  .hp-project-content h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .hp-project-content p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .hp-projects-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%);
+    color: #333;
+    padding: 16px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 40px auto;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(253,216,53,0.3);
+  }
+
+  .hp-projects-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(253,216,53,0.4);
+  }
+
+  .hp-cta-arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .hp-projects-cta:hover .hp-cta-arrow {
+    transform: translateX(5px);
+  }
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .hp-projects-header h1 {
+      font-size: 2rem;
+    }
+    .hp-project-content {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hp-projects-header h1 {
+      font-size: 1.8rem;
+    }
+    .hp-projects-cta {
+      width: 100%;
+      padding: 14px 24px;
+    }
+    .hp-projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Print Styles */
+  @media print {
+    .hp-project-item {
+      break-inside: avoid;
+    }
+    .hp-projects-cta {
+      display: none;
+    }
+  }

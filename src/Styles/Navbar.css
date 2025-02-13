@@ -71,9 +71,6 @@
   border: none; 
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Pastikan margin-left: 1rem dari .navbar-menu li tetap berlaku 
-     agar ada jarak horizontal. 
-  */
 }
 
 /* Hover effect btn-contact */
@@ -82,10 +79,13 @@
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Focus styling */
-.navbar-menu .btn-contact:focus {
+/* Hapus outline dan box-shadow saat link dalam keadaan fokus atau aktif */
+.navbar-menu li a:focus,
+.navbar-menu li a:active {
   outline: none;
+  box-shadow: none;
 }
+
 
 /* Toggle (Mobile) */
 .navbar-toggle {

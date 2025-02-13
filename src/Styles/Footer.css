@@ -1,37 +1,188 @@
 /* src/Styles/Footer.css */
 
-.footer {
-    background-color: #fdd835; /* Latar belakang kuning */
-    color: #333;
-    padding: 1rem 0;
-    text-align: center;
+:root {
+  --primary-color: #3182ce;
+  --secondary-color: #4fd1c5;
+  --text-dark: #2d3748;
+  --text-light: #4a5568;
+  --background-light: #ffffff;
+  --border-color: #e2e8f0;
+  --soft-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.footer-professional {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.footer-column h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-column h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.footer-column-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Company Info Styles */
+.company-description {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.company-tagline {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Quick Links Styles */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-list li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-nav-list a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer-nav-list a:hover {
+  color: var(--primary-color);
+}
+
+/* Contact Information Styles */
+
+.contact-details p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-label {
+  display: block;         /* Membuat label tampil di baris terpisah */
+  font-weight: 600;
+  color: var(--text-dark, #333);
+}
+
+/* Social Media Styles */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 0.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(61, 90, 128, 0.05);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  padding: 4px;
+}
+
+.social-link .social-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: rgba(61, 90, 128, 0.1);
+  transform: translateY(-2px);
+}
+
+.social-link:hover .social-icon {
+  opacity: 1;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.copyright p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
   
-  .footer-content {
-    display: flex;
+  .contact-details p {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
   
-  .footer p {
-    margin: 0.5rem 0;
+  .contact-label {
+    margin-bottom: 0.25rem;
   }
-  
-  .social-links {
-    margin-top: 0.5rem;
-  }
-  
-  .social-links a {
-    margin: 0 0.5rem;
-  }
-  
-  .social-icon {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-  }
-  
-  .social-icon:hover {
-    transform: scale(1.1);
-  }
-  
+}

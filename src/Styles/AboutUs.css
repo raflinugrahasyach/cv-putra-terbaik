@@ -1,445 +1,380 @@
-/* src/Styles/Homepage.css */
+/* src/Styles/AboutUs.css */
 
 /****************************************************
-  1. GLOBAL RESET
+ 1. HERO SECTION (ABOUT US)
 ****************************************************/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
-body {
-  background-color: #f8f8f8; /* Sama seperti homepage */
-  color: #333;
-}
-
-/****************************************************
-  2. GAYA UNTUK LAPTOP/DESKTOP
-****************************************************/
-
-/* HEADER ABOUT US */
-.about-us-header {
-  background: url('../assets/AboutUs/AboutUs-Header.png') no-repeat center center/cover;
-  height: 90vh; /* Sesuaikan tinggi sesuai kebutuhan */
+.about-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('../assets/AboutUs/AboutUs-Header.png') no-repeat center/cover;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
 }
 
-.about-us-header .header-content {
-  max-width: 600px;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent, rgba(0, 0, 0, 0.5));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
   padding: 2rem;
-  color: #fff; /* Supaya teks kontras dengan background image */
 }
 
-.about-us-header h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
+/* Hero Title & Description */
+.about-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   animation: slideInDown 1s ease-out;
+  color: #fdd835;
 }
 
-.about-us-header p {
-  font-size: 1.1rem;
-  line-height: 1.5;
+.about-hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
   animation: slideInUp 1s ease-out;
 }
 
-/* SECTION UMUM */
-.section {
-  padding: 2rem;
+/****************************************************
+ 2. VISION & MISSION SECTION
+****************************************************/
+.vision-mission-section {
+  padding: 2rem 40px;
   background-color: #fff;
-  margin-bottom: 1rem;
-  animation: fadeIn 1.5s ease-in-out; /* Animasi sama seperti homepage */
+  margin-bottom: 1rem; 
+  animation: fadeIn 1.5s ease-in-out;
 }
 
-.section-title {
-  font-size: 2rem;
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.vm-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.vm-header h2 {
+  font-size: 2.5rem;
   color: #333;
   font-weight: bold;
-  margin-bottom: 1rem;
-  animation: slideInLeft 1s ease-out;
-}
-
-.section-subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
-  animation: slideInRight 1s ease-out;
-}
-
-/* VISI & MISI */
-.about-us-vision-mission {
-  background-color: #f8f9fa; /* Warna latar belakang netral */
-  text-align: center;
+  margin-bottom: 10px;
 }
 
 .vm-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 30px;
   justify-content: center;
-  animation: fadeInUp 1.5s ease-in-out; /* Memunculkan kontainer dengan animasi */
 }
 
-.vision, .mission {
-  background: #ffffff;
-  flex: 1 1 300px;
+.vm-card {
+  background: #fff;
+  flex: 1 1 400px;
   padding: 2rem;
   text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.vm-icon {
-  width: 60px;
-  margin-bottom: 1rem;
-}
-
-.vision h3, .mission h3 {
-  font-size: 1.4rem;
-  color: #333;
-  margin-bottom: 0.75rem;
-}
-
-.vision p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Mission list style */
-.mission-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  text-align: left;  /* Supaya bullet teks rata kiri */
-  margin-top: 0.5rem;
-  display: inline-block; /* Agar list tidak selebar container */
-}
-
-.mission-list li {
-  margin-bottom: 0.5rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.mission-list li:before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: #fdd835; 
-}
-
-/* PENCAPAIAN (ACHIEVEMENTS / STATS) */
-.about-us-achievements {
-  background-color: #fcf4d9; /* Latar sedikit kuning lembut */
-  text-align: center;
-}
-
-.achievements-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.achievement-card {
-  background: #fff;
-  width: 240px;
-  padding: 2rem 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  animation: fadeInUp 1.5s ease-in-out;
-  position: relative;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.achievement-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+.vm-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem; /* Menengahkan card-icon dan memberikan margin bottom */
+  background: #f8f9fa;
+  border-radius: 20px;
+  display: flex;           /* Untuk flexbox */
+  align-items: center;     /* Tengah vertikal */
+  justify-content: center; /* Tengah horizontal */
+  transition: transform 0.3s ease;
+}
+
+.card-icon img {
+  width: 60%;     /* Ukuran gambar */
+  height: auto;   /* Menjaga aspek ratio */
+  object-fit: contain; /* Menjaga proporsi gambar */
+}
+
+.vm-card:hover .card-icon {
+  transform: rotate(10deg);
+  background: #fef9c3;
+}
+
+.vm-card h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.vm-card p,
+.vm-card ul {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+
+.vm-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.vm-card ul li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.vm-card ul li .bullet {
+  position: absolute;
+  left: 0;
+  color: #fdd835;
+  font-weight: bold;
+}
+
+/****************************************************
+ 3. ACHIEVEMENTS SECTION
+****************************************************/
+.achievements-section {
+  padding: 2rem 40px;
+  background-color: #fff;
+  margin-bottom: 1rem; 
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.achievements-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.achievements-header h2 {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.achievements-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.achievements-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.achievement-item {
+  background: #fff;
+  width: 300px;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid #eee; /* Tambahkan border tipis */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .achievement-icon {
   width: 80px;
   height: 80px;
-  margin: 0 auto 1rem auto; /* Center icon di tengah */
+  margin: 0 auto 20px;  /* Untuk posisi horizontal center dan margin bottom */
+  background: #f8f9fa;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  display: flex;           /* Tambahkan ini */
+  align-items: center;     /* Tambahkan ini */
+  justify-content: center; /* Tambahkan ini */
 }
 
 .achievement-icon img {
-  width: 100%;
+  width: 60%;  /* Sesuaikan ukuran gambar */
   height: auto;
+  object-fit: contain; /* Pastikan gambar tetap proporsional */
 }
 
-.achievement-card h3 {
-  font-size: 2.2rem;
+.achievement-item:hover .achievement-icon {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.achievement-number {
+  font-size: 3rem;
   color: #fdd835;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
+  font-weight: 800;
 }
 
-.achievement-card p {
-  font-size: 1rem;
-  color: #555;
-}
-
-/****************************************************
-  3. GAYA UNTUK HP (MOBILE)
-****************************************************/
-
-@media (max-width: 480px) {
-  /* HEADER ABOUT US */
-  .about-us-header {
-    height: auto; 
-    padding: 4rem 1rem;
-  }
-
-  .about-us-header h1 {
-    font-size: 2rem;
-  }
-
-  .about-us-header p {
-    font-size: 1rem;
-  }
-
-  /* SECTION UMUM */
-  .section {
-    padding: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .section-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* VISI & MISI */
-  .vm-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .vision, .mission {
-    max-width: 100%;
-    margin: 1rem 0;
-  }
-
-  .vm-icon {
-    width: 50px;
-    margin-bottom: 0.75rem;
-  }
-
-  .vision h3, .mission h3 {
-    font-size: 1.2rem;
-  }
-
-  .vision p, .mission p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  /* Mission list style */
-  .mission-list {
-    text-align: left;
-    padding-left: 1rem;
-  }
-
-  /* PENCAPAIAN (ACHIEVEMENTS / STATS) */
-  .achievements-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .achievement-card {
-    width: 100%;
-    max-width: 400px;
-    padding: 1.5rem 1rem;
-  }
-
-  .achievement-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.75rem;
-  }
-
-  .achievement-card h3 {
-    font-size: 1.8rem;
-  }
-
-  .achievement-card p {
-    font-size: 0.9rem;
-  }
+.achievement-label {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
 }
 
 /****************************************************
-  4. GAYA UNTUK TABLET
+ 4. MEDIA QUERIES
 ****************************************************/
-
-@media (min-width: 481px) and (max-width: 768px) {
-  /* HEADER ABOUT US */
-  .about-us-header {
-    height: 70vh; /* Sesuaikan tinggi sesuai kebutuhan */
-    padding: 3rem 1rem;
-  }
-
-  .about-us-header h1 {
-    font-size: 2.5rem;
-  }
-
-  .about-us-header p {
-    font-size: 1rem;
-  }
-
-  /* SECTION UMUM */
-  .section {
+/* Tablet */
+@media (max-width: 768px) {
+  .about-hero {
+    height: 80vh;
     padding: 2rem;
   }
-
-  .section-title {
-    font-size: 2rem;
+  .hero-content h1 {
+    font-size: 2.8rem;
   }
-
-  .section-subtitle {
+  .hero-content p {
     font-size: 1rem;
-    margin-bottom: 2rem;
   }
-
-  /* VISI & MISI */
+  
+  .vision-mission-section {
+    padding: 70px 30px;
+  }
+  .vm-header h2 {
+    font-size: 2.2rem;
+  }
   .vm-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 20px;
   }
-
-  .vision, .mission {
-    flex: 1 1 45%;
-    margin: 1rem;
+  
+  .achievements-section {
+    padding: 70px 30px;
   }
-
-  .vm-icon {
-    width: 60px;
-    margin-bottom: 1rem;
+  .achievements-header h2 {
+    font-size: 2.2rem;
   }
-
-  .vision h3, .mission h3 {
-    font-size: 1.4rem;
-  }
-
-  .vision p, .mission p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  /* Mission list style */
-  .mission-list {
-    text-align: left;
-    padding-left: 1rem;
-    display: block;
-  }
-
-  /* PENCAPAIAN (ACHIEVEMENTS / STATS) */
-  .achievements-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .achievement-card {
-    width: 45%;
-    max-width: 300px;
-    padding: 2rem 1rem;
-  }
-
-  .achievement-icon {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 1rem;
-  }
-
-  .achievement-card h3 {
-    font-size: 2rem;
-  }
-
-  .achievement-card p {
-    font-size: 1rem;
+  .achievements-grid {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
-/****************************************************
-  5. GAYA TAMBAHAN UNTUK LAPTOP/DESKTOP (LAYAR LEBAR)
-****************************************************/
+/* Mobile */
+@media (max-width: 480px) {
+  .about-hero {
+    height: auto;
+    padding: 4rem 1rem;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+  
+  .section-container {
+    padding: 0 10px;
+  }
+  .vm-header h2 {
+    font-size: 2rem;
+  }
+  .vm-container {
+    gap: 15px;
+  }
+  .achievements-header h2 {
+    font-size: 1.8rem;
+  }
+  .achievements-grid {
+    gap: 15px;
+  }
+}
 
-/* Tambahan untuk memastikan tampilan optimal pada layar sangat lebar */
+/* Laptop/Desktop Layar Lebar */
 @media (min-width: 1200px) {
-  .about-us-header {
+  .about-hero {
     height: 90vh;
   }
-
-  .vm-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .hero-content {
+    max-width: 1000px;
   }
-
+  .vm-container,
   .achievements-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 40px;
   }
 }
 
 /****************************************************
-  6. ANIMATIONS
+ 5. ANIMATIONS
 ****************************************************/
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes slideInDown {
   0% {
-    transform: translateY(-100%);
+    opacity: 0;
+    transform: translateY(-50px);
   }
   100% {
+    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes slideInUp {
   0% {
-    transform: translateY(100%);
+    opacity: 0;
+    transform: translateY(50px);
   }
   100% {
+    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes slideInLeft {
   0% {
-    transform: translateX(-100%);
+    opacity: 0;
+    transform: translateX(-50px);
   }
   100% {
+    opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes slideInRight {
   0% {
-    transform: translateX(100%);
+    opacity: 0;
+    transform: translateX(50px);
   }
   100% {
+    opacity: 1;
     transform: translateX(0);
   }
 }
@@ -447,7 +382,7 @@ body {
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
@@ -463,21 +398,20 @@ body {
     opacity: 0;
     transform: scale(0.3);
   }
-  20% {
-    transform: scale(1.1);
-  }
-  40% {
-    transform: scale(0.9);
-  }
+  20% { transform: scale(1.1); }
+  40% { transform: scale(0.9); }
   60% {
     opacity: 1;
     transform: scale(1.03);
   }
-  80% {
-    transform: scale(0.97);
-  }
+  80% { transform: scale(0.97); }
   100% {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }

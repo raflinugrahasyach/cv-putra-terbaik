@@ -2,15 +2,21 @@
 import React, { useEffect } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { Link as ScrollLink } from 'react-scroll';
-import '../Styles/Homepage.css';
+import { Link } from 'react-router-dom';
+
+// Impor file CSS per section
+import '../Styles/Homepage/Header.css';
+import '../Styles/Homepage/Intro.css';
+import '../Styles/Homepage/Products.css';
+import '../Styles/Homepage/HomepageProjects.css'; // Pastikan nama file sesuai
+import '../Styles/Homepage/Contact.css';
 
 const Homepage = () => {
   useEffect(() => {
-    // Cek hash di URL, misalnya #services-section atau #contact-section
-    const currentHash = window.location.hash; // contoh: "#services-section"
-
-    if (currentHash === '#services-section') {
-      scroller.scrollTo('services-section', {
+    // Cek hash di URL untuk scroll ke section tertentu
+    const currentHash = window.location.hash;
+    if (currentHash === '#products-section') {
+      scroller.scrollTo('products-section', {
         smooth: true,
         duration: 1100,
         offset: -70,
@@ -21,20 +27,25 @@ const Homepage = () => {
         duration: 1100,
         offset: -70,
       });
+    } else if (currentHash === '#projects-section') {
+      scroller.scrollTo('projects-section', {
+        smooth: true,
+        duration: 1100,
+        offset: -70,
+      });
     }
-    // Tambahkan else if lain jika ada section lain
   }, []);
 
   return (
     <>
       {/* Section 1: Header */}
       <header className="header">
+        <div className="header-overlay"></div>
         <div className="header-content">
           <h1>
-            SOLUSI KEAMANAN TERPERCAYA DENGAN TEKNOLOGI TERKINI UNTUK 
-            MENDUKUNG EFISIENSI DAN PRODUKTIVITAS BISNIS ANDA
+            <span className="highlight">SOLUSI KEAMANAN TERPERCAYA</span> DENGAN TEKNOLOGI TERKINI UNTUK MENDUKUNG
+            EFISIENSI DAN PRODUKTIVITAS BISNIS ANDA
           </h1>
-          {/* Tombol "Pesan Sekarang" => scroll ke contact-section */}
           <ScrollLink
             to="contact-section"
             smooth={true}
@@ -43,22 +54,23 @@ const Homepage = () => {
             className="btn-primary"
           >
             Pesan Sekarang
+            <span className="btn-icon"></span>
           </ScrollLink>
         </div>
       </header>
 
       {/* Section 2: Intro */}
-      <section className="section section-intro">
+      <section className="section-intro">
         <div className="section-intro-content">
           <div className="image-content">
-            {/* background-image di set via Homepage.css */}
+            {/* background-image diatur di Intro.css */}
           </div>
           <div className="text-content">
             <h2>Kenalin, Solusi Keamanan Terpercaya untuk Bisnis Anda</h2>
             <p>
-              CV Putra Terbaik adalah mitra terpercaya dalam menyediakan solusi 
-              sistem keamanan modern dan efisien. Dengan teknologi terkini, layanan 
-              profesional, dan komitmen tinggi, kami membantu bisnis Anda meningkatkan 
+              CV Putra Terbaik adalah mitra terpercaya dalam menyediakan solusi
+              sistem keamanan modern dan efisien. Dengan teknologi terkini, layanan
+              profesional, dan komitmen tinggi, kami membantu bisnis Anda meningkatkan
               keamanan, produktivitas, dan efisiensi operasional.
             </p>
           </div>
@@ -66,302 +78,213 @@ const Homepage = () => {
       </section>
 
       {/* Section 3: Layanan Kami */}
-      {/*
-         Dibungkus dengan <Element name="services-section"> agar bisa discroll
-         dari Navbar dengan scroller.scrollTo('services-section').
-      */}
-      <Element name="services-section" className="section section-services">
-        <h2>LAYANAN KAMI</h2>
-        <div className="services">
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/access_control.jpg"
-              alt="Access Control"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Access Control</h3>
-              <p>Sistem kontrol akses pintu yang modern dan aman.</p>
+      <Element name="products-section" className="section-products">
+        <div className="products-header">
+          <h2>PRODUK KAMI</h2>
+          <p>Solusi keamanan modern untuk bisnis Anda</p>
+        </div>
+        <div className="products-grid">
+          {[
+            {
+              image: "/assets/Homepage/products/access_control.jpg",
+              title: "Access Control",
+              desc: "Sistem kontrol akses pintu yang modern dan aman."
+            },
+            {
+              image: "/assets/Homepage/products/barrier_gate_e10.jpg", 
+              title: "Barrier Gate E10",
+              desc: "Sistem kontrol akses kendaraan yang andal dan efisien."
+            },
+            {
+              image: "/assets/Homepage/products/box_dispenser_ticket.jpg",
+              title: "Box Dispenser Ticket",
+              desc: "Mesin dispenser tiket untuk pengelolaan parkir otomatis."
+            },
+            {
+              image: "/assets/Homepage/products/ip_camera_hikvision_outdoor_2mp.jpg",
+              title: "IP Camera Hikvision",
+              desc: "Kamera pengawasan outdoor dengan resolusi 2MP."
+            },
+            {
+              image: "/assets/Homepage/products/pos_parkir_single.jpg",
+              title: "Pos Parkir Single", 
+              desc: "Pos parkir efisien untuk kontrol masuk dan keluar kendaraan."
+            },
+            {
+              image: "/assets/Homepage/products/rfid_access_control.jpg",
+              title: "RFID Access Control",
+              desc: "Sistem pengenalan kartu RFID untuk kontrol akses."
+            },
+            {
+              image: "/assets/Homepage/products/touchless_button.jpg",
+              title: "Touchless Button",
+              desc: "Tombol tanpa sentuh untuk akses pintu otomatis."
+            },
+            {
+              image: "/assets/Homepage/products/vehicle_loop_detector.jpg",
+              title: "Vehicle Loop Detector",
+              desc: "Sensor deteksi kendaraan untuk manajemen parkir."
+            },
+            {
+              image: "/assets/Homepage/products/kartu_rfid.jpg",
+              title: "Kartu RFID",
+              desc: "Kartu pintar untuk akses kontrol yang cepat dan aman."
+            }
+          ].map((item, index) => (
+            <div key={index} className="product-card">
+              <div className="product-image-wrapper">
+                <img src={item.image} alt={item.title} className="product-image" />
+              </div>
+              <div className="product-info">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
             </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/barrier_gate_e10.jpg"
-              alt="Barrier Gate E10"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Barrier Gate E10</h3>
-              <p>Sistem kontrol akses kendaraan yang andal dan efisien.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/box_dispenser_ticket.jpg"
-              alt="Box Dispenser Ticket"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Box Dispenser Ticket</h3>
-              <p>Mesin dispenser tiket untuk pengelolaan parkir otomatis.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/ip_camera_hikvision_outdoor_2mp.jpg"
-              alt="IP Camera Hikvision"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>IP Camera Hikvision</h3>
-              <p>Kamera pengawasan outdoor dengan resolusi 2MP.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/pos_parkir_single.jpg"
-              alt="Pos Parkir Single"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Pos Parkir Single</h3>
-              <p>Pos parkir efisien untuk kontrol masuk dan keluar kendaraan.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/rfid_access_control.jpg"
-              alt="RFID Access Control"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>RFID Access Control</h3>
-              <p>Sistem pengenalan kartu RFID untuk kontrol akses.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/touchless_button.jpg"
-              alt="Touchless Button"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Touchless Button</h3>
-              <p>Tombol tanpa sentuh untuk akses pintu otomatis.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/vehicle_loop_detector.jpg"
-              alt="Vehicle Loop Detector"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Vehicle Loop Detector</h3>
-              <p>Sensor deteksi kendaraan untuk manajemen parkir.</p>
-            </div>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/assets/Homepage/services/kartu_rfid.jpg"
-              alt="Kartu RFID"
-              className="service-image"
-            />
-            <div className="service-info">
-              <h3>Kartu RFID</h3>
-              <p>Kartu pintar untuk akses kontrol yang cepat dan aman.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </Element>
 
-      {/* Section 4: Proyek Kami */}
-      <section className="section section-projects">
-        <h2>PROYEK KAMI</h2>
-        <p>Kami telah dipercaya untuk mengamankan berbagai proyek penting:</p>
-        <div className="projects">
-          <div className="project-card">
-            <img
-              src="/assets/projects/rs_ortopedi_solo.jpg"
-              alt="RS Ortopedi Solo"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>RS Ortopedi Solo</h3>
-              <p>Solo, Jawa Tengah</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/depo_pertamina_cilacap.jpg"
-              alt="Depo Pertamina Cilacap"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Depo Pertamina Cilacap</h3>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/depo_lpg_cilacap.jpg"
-              alt="Depo LPG Cilacap"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Depo LPG Cilacap</h3>
-              <p>Cilacap, Jawa Tengah</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/jembatan_timbang_cilacap.jpg"
-              alt="Jembatan Timbang Pertamina Cilacap"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Jembatan Timbang Pertamina Cilacap</h3>
-              <p>Cilacap, Jawa Tengah</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/antrian_kendaraan_cilacap.jpg"
-              alt="Sistem Antrian Kendaraan Cilacap"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Sistem Antrian Kendaraan Cilacap</h3>
-              <p>Cilacap, Jawa Tengah</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/tripod_tirtonadi_solo.jpg"
-              alt="Sistem Tripod Terminal Tirtonadi Solo"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Sistem Tripod Terminal Tirtonadi Solo</h3>
-              <p>Solo, Jawa Tengah</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/ramayana_gresik.jpg"
-              alt="Ramayana Gresik"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Ramayana Gresik</h3>
-              <p>Gresik, Jawa Timur</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/pasar_krempyeng_gresik.jpg"
-              alt="Pasar Krempyeng Gresik"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Pasar Krempyeng Gresik</h3>
-              <p>Gresik, Jawa Timur</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/rsi_jepara.jpg"
-              alt="RSI Jepara"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>RSI Jepara</h3>
-              <p>Jepara, Jawa Tengah</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/rspku_jogjakarta.jpg"
-              alt="RS PKU Muhammadiyah Jogjakarta"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>RS PKU Muhammadiyah Jogjakarta</h3>
-              <p>Jogjakarta</p>
-            </div>
-          </div>
-          <div className="project-card">
-            <img
-              src="/assets/projects/bandara_juanda.jpg"
-              alt="Bandara International Juanda"
-              className="project-image"
-            />
-            <div className="project-info">
-              <h3>Bandara International Juanda</h3>
-              <p>Surabaya, Jawa Timur</p>
-            </div>
-          </div>
+      {/* Section 4: Proyek Kami (Homepage Projects) */}
+      <Element name="projects-section" className="hp-section-projects">
+        <div className="hp-projects-header">
+          <h1>PROYEK KAMI</h1>
+          <p className="hp-projects-subheader">
+            Kami telah dipercaya untuk mengerjakan berbagai proyek penting
+          </p>
         </div>
-      </section>
+        <div className="hp-projects-grid-container">
+          <div className="hp-projects-grid">
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RS Ortopedi Solo</h3>
+                <p>Solo, Jawa Tengah</p>
+              </div>
+            </div>
 
-      {/* Section 5: Hubungi Kami */}
-      <Element name="contact-section" className="section section-contact">
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Depo Pertamina Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Depo LPG Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Bandara International Juanda</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RS PKU Muhammadiyah</h3>
+                <p>Jogjakarta</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">50+ Projects</div>
+                <h3>Cari Tahu Lebih Banyak!</h3>
+                <p>Temukan bagaimana kami membantu bisnis seperti milik Anda</p>
+              </div>
+            </div>
+          </div>
+
+          <Link to="/projects" className="hp-projects-cta">
+            <span>Lihat Semua Proyek</span>
+            <div className="hp-cta-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path 
+                  d="M5 12H19M19 12L12 5M19 12L12 19" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+          </Link>
+        </div>
+      </Element>
+
+      {/* Section 5: Hubungi Kami & Floating WhatsApp */}
+      <Element name="contact-section" className="section-contact">
         <h1 className="section-title">HUBUNGI KAMI</h1>
         <div className="contact-wrapper">
-          {/* Informasi Kontak */}
           <div className="contact-info">
             <h2 className="contact-title">KONTAK</h2>
-            <div className="contact-item">
+            
+            {/* Email */}
+            <a href="mailto:cvputraterbaik@gmail.com" className="contact-item">
               <img
                 src="/assets/Homepage/icons/logo_gmail.png"
                 alt="Email"
                 className="contact-icon"
               />
-              <p>
-                <a href="mailto:cvputraterbaik@gmail.com">cvputraterbaik@gmail.com</a>
-              </p>
-            </div>
-            <div className="contact-item">
+              <div className="contact-item-content">
+                <p>cvputraterbaik@gmail.com</p>
+              </div>
+            </a>
+
+            {/* Telepon */}
+            <a href="tel:+628113863270" className="contact-item">
               <img
                 src="/assets/Homepage/icons/logo_call.png"
                 alt="Telepon"
                 className="contact-icon"
               />
-              <p>
-                <a href="tel:+628113863270">+62 811-3863-270</a>
-              </p>
-            </div>
-            <div className="contact-item">
+              <div className="contact-item-content">
+                <p>+62 811-3863-270</p>
+              </div>
+            </a>
+
+            {/* Alamat - Buka di Google Maps */}
+            <a 
+              href="https://www.google.com/maps?q=Jl.+Manukan+Loka+3/14,+Surabaya,+Jawa+Timur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-item"
+            >
               <img
                 src="/assets/Homepage/icons/logo_maps.png"
                 alt="Alamat"
                 className="contact-icon"
               />
-              <p>Jl. Manukan Loka 3/14, Surabaya, Jawa Timur</p>
-            </div>
-            <div className="contact-item">
+              <div className="contact-item-content">
+                <p>Jl. Manukan Loka 3/14, Surabaya, Jawa Timur</p>
+              </div>
+            </a>
+
+            {/* WhatsApp */}
+            <a 
+              href="https://wa.me/628113863270"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-item"
+            >
               <img
                 src="/assets/Homepage/icons/logo_wa.png"
                 alt="WhatsApp"
                 className="contact-icon"
               />
-              <p>
-                <a
-                  href="https://wa.me/628113863270"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Chat via WhatsApp
-                </a>
-              </p>
-            </div>
+              <div className="contact-item-content">
+                <p>Chat via WhatsApp</p>
+              </div>
+            </a>
+
             <div className="contact-map">
               <iframe
                 title="Lokasi Kantor CV Putra Terbaik"
@@ -375,17 +298,23 @@ const Homepage = () => {
             </div>
           </div>
 
-          {/* Formulir Pesan */}
           <div className="contact-form">
             <h2>KIRIM PESAN</h2>
-            <form>
+            <form action="https://formspree.io/f/xdkalpgo" method="POST">
               <label htmlFor="name">Nama</label>
-              <input type="text" id="name" placeholder="Nama Anda" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nama Anda"
+                required
+              />
 
               <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="emailanda@gmail.com"
                 required
               />
@@ -394,6 +323,7 @@ const Homepage = () => {
               <input
                 type="text"
                 id="subject"
+                name="subject"
                 placeholder="Tulis subjek Anda di sini"
                 required
               />
@@ -401,26 +331,36 @@ const Homepage = () => {
               <label htmlFor="message">Pesan Anda</label>
               <textarea
                 id="message"
+                name="message"
                 placeholder="Tulis pesan Anda di sini"
                 rows="4"
                 required
               ></textarea>
 
               <div className="consent">
-                <input type="checkbox" id="consent" required />
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  required
+                />
                 <label htmlFor="consent">
-                  Saya setuju bahwa informasi ini akan digunakan untuk
-                  menghubungi saya.
+                  Saya setuju bahwa informasi ini akan digunakan untuk menghubungi saya.
                 </label>
               </div>
+
+              <input
+                type="hidden"
+                name="_replyto"
+                value="cvputraterbaik@gmail.com"
+              />
+
               <button type="submit" className="btn-submit">
                 Kirim Pesan
               </button>
             </form>
           </div>
         </div>
-
-        {/* Tombol WA Mengambang */}
         <div className="floating-whatsapp">
           <a
             href="https://wa.me/628113863270"

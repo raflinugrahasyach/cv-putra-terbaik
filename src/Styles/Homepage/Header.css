@@ -1,0 +1,116 @@
+/* src/Styles/Homepage/Header.css */
+
+/* Header & Hero Section */
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('../../assets/Homepage/Homepage-Header.png') no-repeat center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .header-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  }
+  
+  .header-content {
+    max-width: 1000px;
+    padding: 0 40px;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .header-content h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+  }
+  
+  .highlight {
+    color: #fdd835;
+    padding: 0 5px;
+  }
+  
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    background: #fdd835;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(253, 216, 53, 0.3);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 1.3s;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    background: #fdd835;
+    box-shadow: 0 6px 30px rgba(253, 216, 53, 0.4);
+  }
+  
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-primary:hover .btn-icon {
+    transform: translateX(5px);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-content h1 {
+      font-size: 2.5rem;
+    }
+    .btn-primary {
+      padding: 14px 28px;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header-content {
+      padding: 0 20px;
+    }
+    .header-content h1 {
+      font-size: 2rem;
+    }
+    .btn-primary {
+      padding: 12px 24px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media print {
+    .header {
+      min-height: auto;
+      background: none;
+      color: #000;
+    }
+  }
+  
