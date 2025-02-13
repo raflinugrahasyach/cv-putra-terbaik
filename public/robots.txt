@@ -1,8 +1,8 @@
-# robots.txt for https://www.cvputraterbaik.com/
+# robots.txt for https://www.putraterbaik.com/
 
 User-agent: *
 Disallow: /admin/
 Disallow: /login/
 Allow: /
 
-Sitemap: https://www.cvputraterbaik.com/sitemap.xml
+Sitemap: https://www.putraterbaik.com/sitemap.xml
