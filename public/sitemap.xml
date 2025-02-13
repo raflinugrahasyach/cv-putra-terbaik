@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset 
+  xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="https://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- Homepage -->
   <url>
-    <loc>https://www.cvputraterbaik.com/</loc>
+    <loc>https://www.putraterbaik.com/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.putraterbaik.com/assets/Homepage/preview.png</image:loc>
+      <image:caption>Preview Homepage Putra Terbaik</image:caption>
+    </image:image>
   </url>
+  
+  <!-- About Us -->
   <url>
-    <loc>https://www.cvputraterbaik.com/aboutus</loc>
+    <loc>https://www.putraterbaik.com/about</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Tambahkan URL lain sesuai kebutuhan -->
+  
+  <!-- Services -->
+  <url>
+    <loc>https://www.putraterbaik.com/services</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Projects -->
+  <url>
+    <loc>https://www.putraterbaik.com/projects</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <!-- Contoh video dari halaman Projects -->
+    <video:video>
+      <video:thumbnail_loc>https://www.putraterbaik.com/assets/Projects/project-vid-1-thumbnail.jpg</video:thumbnail_loc>
+      <video:title>Proyek Video 1 - Putra Terbaik</video:title>
+      <video:description>Deskripsi singkat tentang proyek video 1.</video:description>
+      <video:content_loc>https://www.putraterbaik.com/assets/Projects/project-vid-1.mp4</video:content_loc>
+      <video:publication_date>2025-01-26</video:publication_date>
+    </video:video>
+  </url>
+  
+  <!-- Contact Us -->
+  <url>
+    <loc>https://www.putraterbaik.com/contactus</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Tambahkan URL lain jika ada halaman tambahan atau konten khusus -->
+  
 </urlset>
