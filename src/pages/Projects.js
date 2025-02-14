@@ -66,6 +66,18 @@ const Projects = () => {
 
   return (
     <div className="projects-page">
+      <Helmet>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYVG9EY6E4"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RYVG9EY6E4');
+          `}
+        </script>
+      </Helmet>
       {/* Header Section */}
       <div className="projects-header">
         <h1>PROYEK KAMI</h1>

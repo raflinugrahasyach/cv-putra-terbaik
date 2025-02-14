@@ -4,6 +4,18 @@ import '../Styles/AboutUs.css';
 const AboutUs = () => {
   return (
     <>
+    <Helmet>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYVG9EY6E4"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RYVG9EY6E4');
+          `}
+        </script>
+      </Helmet>
       {/* Hero Section dengan parallax effect */}
       <header className="about-hero">
         <div className="hero-overlay"></div>

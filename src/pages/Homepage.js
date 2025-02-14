@@ -38,6 +38,29 @@ const Homepage = () => {
 
   return (
     <>
+     <Helmet>
+
+        {/* Google Analytics */}
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYVG9EY6E4"></script>
+
+        <script>
+
+          {`
+
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag(){dataLayer.push(arguments);}
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-RYVG9EY6E4');
+
+          `}
+
+        </script>
+
+      </Helmet>
       {/* Section 1: Header */}
       <header className="header">
         <div className="header-overlay"></div>
