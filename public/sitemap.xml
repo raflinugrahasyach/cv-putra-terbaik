@@ -24,9 +24,9 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Services -->
+  <!-- Products -->
   <url>
-    <loc>https://www.putraterbaik.com/services</loc>
+    <loc>https://www.putraterbaik.com/#products-section</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -50,7 +50,7 @@
   
   <!-- Contact Us -->
   <url>
-    <loc>https://www.putraterbaik.com/contactus</loc>
+    <loc>https://www.putraterbaik.com/#contact-section</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
