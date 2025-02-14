@@ -1,4 +1,5 @@
 // AboutUs.js
+import { Helmet } from 'react-helmet';
 import '../Styles/AboutUs.css';
 
 const AboutUs = () => {
