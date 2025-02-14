@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { Link as ScrollLink } from 'react-scroll';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 // Impor file CSS per section

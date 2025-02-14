@@ -1,6 +1,7 @@
 // src/pages/Projects.js
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import '../Styles/Projects.css';
 
 const Projects = () => {
