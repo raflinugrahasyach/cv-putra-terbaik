@@ -41,10 +41,11 @@ const Projects = () => {
     { id: 14, media: "/assets/Projects/project-14.jpg" },
     { id: 15, media: "/assets/Projects/project-15.jpg" },
     { id: 16, media: "/assets/Projects/project-16.jpg" },
-    { id: 17, media: "/assets/Projects/project-vid-1.mp4" },
-    { id: 18, media: "/assets/Projects/project-vid-2.mp4" },
-    { id: 19, media: "/assets/Projects/project-vid-3.mp4" },
-    { id: 20, media: "/assets/Projects/project-vid-4.mp4" },
+    { id: 17, media: "/assets/Projects/project-17.jpg" },
+    { id: 18, media: "/assets/Projects/project-vid-1.mp4" },
+    { id: 19, media: "/assets/Projects/project-vid-2.mp4" },
+    { id: 20, media: "/assets/Projects/project-vid-3.mp4" },
+    { id: 21, media: "/assets/Projects/project-vid-4.mp4" },
   ];
 
   // Fungsi untuk merender ikon overlay dan badge untuk menandai tipe media

@@ -188,6 +188,19 @@ const Footer = () => {
                 >
                   <InstagramIcon />
                 </a>
+                <a 
+                  href="https://www.tokopedia.com/unitedportal" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-link"
+                  aria-label="Tokopedia"
+                >
+                  <img 
+                    src="/assets/Homepage/icons/logo_tokopedia.png"
+                    alt="Tokopedia" 
+                    style={{ width: '24px', height: '24px' }}
+                  />
+                </a>
               </div>
             </div>
           </div>
