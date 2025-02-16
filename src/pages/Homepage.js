@@ -1,9 +1,11 @@
-// src/pages/Homepage.js
 import React, { useEffect } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { Link as ScrollLink } from 'react-scroll';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+
+import ContactCTA from '../components/ContactCTA';
+import ProductCarousel from '../components/ProductCarousel';
 
 // Impor file CSS per section
 import '../Styles/Homepage/Header.css';
@@ -37,31 +39,78 @@ const Homepage = () => {
     }
   }, []);
 
+  // Array produk; untuk produk dengan lebih dari satu gambar, gunakan properti "images"
+  const products = [
+    {
+      images: [
+        "/assets/Homepage/products/pos_parkir_single1.jpg",
+        "/assets/Homepage/products/pos_parkir_single2.jpg",
+        "/assets/Homepage/products/pos_parkir_single3.jpg"
+      ],
+      title: "Pos Parkir Single",
+      desc: "Pos parkir efisien untuk kontrol masuk dan keluar kendaraan."
+    },
+    {
+      images: [
+        "/assets/Homepage/products/box_dispenser_ticket1.jpg",
+        "/assets/Homepage/products/box_dispenser_ticket2.jpg",
+        "/assets/Homepage/products/box_dispenser_ticket3.jpg"
+      ],
+      title: "Box Dispenser Ticket",
+      desc: "Mesin dispenser tiket untuk pengelolaan parkir otomatis."
+    },
+    {
+      image: "/assets/Homepage/products/barrier_gate_e10.jpg",
+      title: "Barrier Gate E10",
+      desc: "Sistem kontrol akses kendaraan yang andal dan efisien."
+    },
+    {
+      image: "/assets/Homepage/products/access_control.jpg",
+      title: "Access Control",
+      desc: "Sistem kontrol akses pintu yang modern dan aman."
+    },
+    {
+      image: "/assets/Homepage/products/ip_camera_hikvision_outdoor_2mp.jpg",
+      title: "IP Camera Hikvision",
+      desc: "Kamera pengawasan outdoor dengan resolusi 2MP."
+    },
+    {
+      image: "/assets/Homepage/products/rfid_access_control.jpg",
+      title: "RFID Access Control",
+      desc: "Sistem pengenalan kartu RFID untuk kontrol akses."
+    },
+    {
+      image: "/assets/Homepage/products/touchless_button.jpg",
+      title: "Touchless Button",
+      desc: "Tombol tanpa sentuh untuk akses pintu otomatis."
+    },
+    {
+      image: "/assets/Homepage/products/vehicle_loop_detector.jpg",
+      title: "Vehicle Loop Detector",
+      desc: "Sensor deteksi kendaraan untuk manajemen parkir."
+    },
+    {
+      image: "/assets/Homepage/products/kartu_rfid.jpg",
+      title: "Kartu RFID",
+      desc: "Kartu pintar untuk akses kontrol yang cepat dan aman."
+    }
+  ];
+
   return (
     <>
-     <Helmet>
-
+      <Helmet>
         {/* Google Analytics */}
-
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYVG9EY6E4"></script>
-
         <script>
-
           {`
-
             window.dataLayer = window.dataLayer || [];
-
             function gtag(){dataLayer.push(arguments);}
-
             gtag('js', new Date());
-
             gtag('config', 'G-RYVG9EY6E4');
-
           `}
-
         </script>
-
       </Helmet>
+
       {/* Section 1: Header */}
       <header className="header">
         <div className="header-overlay"></div>
@@ -108,56 +157,14 @@ const Homepage = () => {
           <p>Solusi keamanan modern untuk bisnis Anda</p>
         </div>
         <div className="products-grid">
-          {[
-            {
-              image: "/assets/Homepage/products/access_control.jpg",
-              title: "Access Control",
-              desc: "Sistem kontrol akses pintu yang modern dan aman."
-            },
-            {
-              image: "/assets/Homepage/products/barrier_gate_e10.jpg", 
-              title: "Barrier Gate E10",
-              desc: "Sistem kontrol akses kendaraan yang andal dan efisien."
-            },
-            {
-              image: "/assets/Homepage/products/box_dispenser_ticket.jpg",
-              title: "Box Dispenser Ticket",
-              desc: "Mesin dispenser tiket untuk pengelolaan parkir otomatis."
-            },
-            {
-              image: "/assets/Homepage/products/ip_camera_hikvision_outdoor_2mp.jpg",
-              title: "IP Camera Hikvision",
-              desc: "Kamera pengawasan outdoor dengan resolusi 2MP."
-            },
-            {
-              image: "/assets/Homepage/products/pos_parkir_single.jpg",
-              title: "Pos Parkir Single", 
-              desc: "Pos parkir efisien untuk kontrol masuk dan keluar kendaraan."
-            },
-            {
-              image: "/assets/Homepage/products/rfid_access_control.jpg",
-              title: "RFID Access Control",
-              desc: "Sistem pengenalan kartu RFID untuk kontrol akses."
-            },
-            {
-              image: "/assets/Homepage/products/touchless_button.jpg",
-              title: "Touchless Button",
-              desc: "Tombol tanpa sentuh untuk akses pintu otomatis."
-            },
-            {
-              image: "/assets/Homepage/products/vehicle_loop_detector.jpg",
-              title: "Vehicle Loop Detector",
-              desc: "Sensor deteksi kendaraan untuk manajemen parkir."
-            },
-            {
-              image: "/assets/Homepage/products/kartu_rfid.jpg",
-              title: "Kartu RFID",
-              desc: "Kartu pintar untuk akses kontrol yang cepat dan aman."
-            }
-          ].map((item, index) => (
+          {products.map((item, index) => (
             <div key={index} className="product-card">
               <div className="product-image-wrapper">
-                <img src={item.image} alt={item.title} className="product-image" />
+                {item.images ? (
+                  <ProductCarousel images={item.images} interval={4000} />
+                ) : (
+                  <img src={item.image} alt={item.title} className="product-image" />
+                )}
               </div>
               <div className="product-info">
                 <h3>{item.title}</h3>
@@ -165,6 +172,7 @@ const Homepage = () => {
               </div>
             </div>
           ))}
+          <ContactCTA />
         </div>
       </Element>
 
@@ -178,6 +186,7 @@ const Homepage = () => {
         </div>
         <div className="hp-projects-grid-container">
           <div className="hp-projects-grid">
+            {/* Project Items */}
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
@@ -185,7 +194,6 @@ const Homepage = () => {
                 <p>Solo, Jawa Tengah</p>
               </div>
             </div>
-
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
@@ -193,7 +201,6 @@ const Homepage = () => {
                 <p>Cilacap, Jawa Tengah</p>
               </div>
             </div>
-
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
@@ -201,15 +208,48 @@ const Homepage = () => {
                 <p>Cilacap, Jawa Tengah</p>
               </div>
             </div>
-
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
-                <h3>Bandara International Juanda</h3>
-                <p>Surabaya, Jawa Timur</p>
+                <h3>Jembatan Timbang Pertamina Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
               </div>
             </div>
-
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Sistem Antrian Kendaraan Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Sistem Tripod Terminal Tirtonadi Solo</h3>
+                <p>Solo, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Ramayana Gresik</h3>
+                <p>Gresik, Jawa Timur</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Pasar Krempyeng Gresik</h3>
+                <p>Gresik, Jawa Timur</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RSI Jepara</h3>
+                <p>Jepara, Jawa Tengah</p>
+              </div>
+            </div>
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
@@ -217,7 +257,14 @@ const Homepage = () => {
                 <p>Jogjakarta</p>
               </div>
             </div>
-
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Bandara International Juanda</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+            {/* Call-to-action item */}
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">50+ Projects</div>
@@ -231,11 +278,11 @@ const Homepage = () => {
             <span>Lihat Semua Proyek</span>
             <div className="hp-cta-arrow">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path 
-                  d="M5 12H19M19 12L12 5M19 12L12 19" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -250,8 +297,6 @@ const Homepage = () => {
         <div className="contact-wrapper">
           <div className="contact-info">
             <h2 className="contact-title">KONTAK</h2>
-            
-            {/* Email */}
             <a href="mailto:cvputraterbaik@gmail.com" className="contact-item">
               <img
                 src="/assets/Homepage/icons/logo_gmail.png"
@@ -262,8 +307,6 @@ const Homepage = () => {
                 <p>cvputraterbaik@gmail.com</p>
               </div>
             </a>
-
-            {/* Telepon */}
             <a href="tel:+628113863270" className="contact-item">
               <img
                 src="/assets/Homepage/icons/logo_call.png"
@@ -274,9 +317,7 @@ const Homepage = () => {
                 <p>+62 811-3863-270</p>
               </div>
             </a>
-
-            {/* Alamat - Buka di Google Maps */}
-            <a 
+            <a
               href="https://www.google.com/maps?q=Jl.+Manukan+Loka+3/14,+Surabaya,+Jawa+Timur"
               target="_blank"
               rel="noopener noreferrer"
@@ -291,9 +332,7 @@ const Homepage = () => {
                 <p>Jl. Manukan Loka 3/14, Surabaya, Jawa Timur</p>
               </div>
             </a>
-
-            {/* WhatsApp */}
-            <a 
+            <a
               href="https://wa.me/628113863270"
               target="_blank"
               rel="noopener noreferrer"
@@ -308,7 +347,6 @@ const Homepage = () => {
                 <p>Chat via WhatsApp</p>
               </div>
             </a>
-
             <div className="contact-map">
               <iframe
                 title="Lokasi Kantor CV Putra Terbaik"
@@ -333,7 +371,6 @@ const Homepage = () => {
                 placeholder="Nama Anda"
                 required
               />
-
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -342,7 +379,6 @@ const Homepage = () => {
                 placeholder="emailanda@gmail.com"
                 required
               />
-
               <label htmlFor="subject">Subjek</label>
               <input
                 type="text"
@@ -351,7 +387,6 @@ const Homepage = () => {
                 placeholder="Tulis subjek Anda di sini"
                 required
               />
-
               <label htmlFor="message">Pesan Anda</label>
               <textarea
                 id="message"
@@ -360,7 +395,6 @@ const Homepage = () => {
                 rows="4"
                 required
               ></textarea>
-
               <div className="consent">
                 <input
                   type="checkbox"
@@ -372,13 +406,11 @@ const Homepage = () => {
                   Saya setuju bahwa informasi ini akan digunakan untuk menghubungi saya.
                 </label>
               </div>
-
               <input
                 type="hidden"
                 name="_replyto"
                 value="cvputraterbaik@gmail.com"
               />
-
               <button type="submit" className="btn-submit">
                 Kirim Pesan
               </button>
