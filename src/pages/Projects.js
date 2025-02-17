@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import '../Styles/Projects.css';
 
+
 const Projects = () => {
   const location = useLocation();
   const [selectedMedia, setSelectedMedia] = useState(null);

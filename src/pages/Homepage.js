@@ -417,19 +417,6 @@ const Homepage = () => {
             </form>
           </div>
         </div>
-        <div className="floating-whatsapp">
-          <a
-            href="https://wa.me/628113863270"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/assets/Homepage/icons/logo_wa.png"
-              alt="Chat via WhatsApp"
-              className="whatsapp-icon"
-            />
-          </a>
-        </div>
       </Element>
     </>
   );
