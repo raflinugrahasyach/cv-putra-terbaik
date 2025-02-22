@@ -37,13 +37,13 @@
   .hp-projects-header p::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -15px;
     left: 50%;
-    width: 0;
+    width: 80px;
     height: 4px;
     background: linear-gradient(90deg, #fdd835, #fbc02d);
     transform: translateX(-50%);
-    animation: lineExpand 1s ease forwards 0.5s;
+    border-radius: 2px;
   }
 
   .hp-projects-grid-container {

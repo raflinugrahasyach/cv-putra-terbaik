@@ -2,13 +2,10 @@
 
 /* Section Contact */
 .section-contact {
-    padding: 80px 20px;
-    background-color: #fff;
-    margin-bottom: 1rem;
-    /* Animasi fade saat section muncul */
-    animation: fadeIn 1.5s ease-in-out;
-    max-width: 100%;
-    overflow: hidden;
+  padding: 2rem 40px;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 /* Kelas tambahan untuk memicu animasi fade saat ditampilkan secara kondisional */
@@ -127,7 +124,18 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Pastikan penuh */
+    max-width: 800px; /* Batasi agar tidak terlalu besar */
+    height: auto; /* Biarkan tinggi menyesuaikan */
+    margin: 0 auto; /* Pusatkan peta */
 }
+
+.contact-map iframe {
+    width: 100%;
+    border: 0;
+    border-radius: 16px;
+}
+
 
 .contact-form h2 {
     font-size: 1.8rem;

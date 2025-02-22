@@ -142,3 +142,14 @@
     color: #333;
   }
   
+  .skeleton-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    background: #f3f3f3;
+  }
+  

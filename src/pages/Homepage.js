@@ -3,6 +3,8 @@ import { Element, scroller } from 'react-scroll';
 import { Link as ScrollLink } from 'react-scroll';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { Car, Cpu, ShieldCheck, Scan, DoorClosed } from 'lucide-react';
+
 
 import ContactCTA from '../components/ContactCTA';
 import ProductCarousel from '../components/ProductCarousel';
@@ -13,6 +15,7 @@ import '../Styles/Homepage/Intro.css';
 import '../Styles/Homepage/Products.css';
 import '../Styles/Homepage/HomepageProjects.css'; // Pastikan nama file sesuai
 import '../Styles/Homepage/Contact.css';
+import '../Styles/Homepage/Services.css';
 
 const Homepage = () => {
   useEffect(() => {
@@ -144,13 +147,70 @@ const Homepage = () => {
               CV Putra Terbaik adalah mitra terpercaya dalam menyediakan solusi
               sistem keamanan modern dan efisien. Dengan teknologi terkini, layanan
               profesional, dan komitmen tinggi, kami membantu bisnis Anda meningkatkan
-              keamanan, produktivitas, dan efisiensi operasional.
+              keamanan, produktivitas, dan efisiensi operasional. 
             </p>
           </div>
         </div>
       </section>
 
       {/* Section 3: Layanan Kami */}
+      <Element name="services-section" className="services-section">
+        <div className="services-header">
+          <h2>LAYANAN KAMI</h2>
+          <p>Solusi keamanan modern dan efisien untuk mendukung operasional bisnis Anda dengan teknologi terkini</p>
+        </div>
+
+        <div className="services-grid">
+          {[
+            {
+              icon: <Car />,
+              title: "Sistem Parkir Otomatis",
+              items: ["Barrier Gate Seri MX & E", "Pos Parkir Single", "Box Manless System"]
+            },
+            {
+              icon: <Cpu />,
+              title: "Sistem Kontrol Akses",
+              items: ["RFID Reader System", "Vehicle Loop Detector", "Software Custom"]
+            },
+            {
+              icon: <Scan />,
+              title: "Teknologi Scanning",
+              items: ["QR Code Scanner", "Touchless Button", "Capture Foto IP Camera"]
+            },
+            {
+              icon: <DoorClosed />,
+              title: "Otomatisasi Pintu",
+              items: ["Automatic Door Closer", "Magnetic Door Lock", "Sliding Gate"]
+            }
+          ].map((service, index) => (
+            <div key={index} className="service-card">
+              <div className="service-icon">{service.icon}</div>
+              <h3 className="service-title">{service.title}</h3>
+              <ul className="service-list">
+                {service.items.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="trust-banner">
+          <div className="trust-content">
+            <div className="trust-icon">
+              <ShieldCheck />
+            </div>
+            <div className="trust-text">
+              <h3>Dipercaya di Seluruh Indonesia</h3>
+              <p>
+                Solusi keamanan kami telah dipercaya oleh berbagai instansi dan korporasi di seluruh wilayah Indonesia. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </Element>
+
+      {/* Section 4: Produk Kami */}
       <Element name="products-section" className="section-products">
         <div className="products-header">
           <h2>PRODUK KAMI</h2>
@@ -176,7 +236,7 @@ const Homepage = () => {
         </div>
       </Element>
 
-      {/* Section 4: Proyek Kami (Homepage Projects) */}
+      {/* Section 5: Proyek Kami (Homepage Projects) */}
       <Element name="projects-section" className="hp-section-projects">
         <div className="hp-projects-header">
           <h1>PROYEK KAMI</h1>
@@ -264,6 +324,93 @@ const Homepage = () => {
                 <p>Surabaya, Jawa Timur</p>
               </div>
             </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RSUD Dr Sutomo</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RS Woodward</h3>
+                <p>Palu, Sulawesi Tengah</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>PT Pertamina Perak</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Puri Safira Regency</h3>
+                <p>Gresik, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Amartha Safira</h3>
+                <p>Sidoarjo, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Safira Garden</h3>
+                <p>Sidoarjo, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Anvaya Juanda</h3>
+                <p>Sidoarjo, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Grand East Residence</h3>
+                <p>Sidoarjo, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>PLN Ketintang</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Warkop Mie Agam</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Pergudangan Waringin Margomulyo</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
             {/* Call-to-action item */}
             <div className="hp-project-item">
               <div className="hp-project-content">
@@ -291,7 +438,7 @@ const Homepage = () => {
         </div>
       </Element>
 
-      {/* Section 5: Hubungi Kami & Floating WhatsApp */}
+      {/* Section 6: Hubungi Kami & Floating WhatsApp */}
       <Element name="contact-section" className="section-contact">
         <h1 className="section-title">HUBUNGI KAMI</h1>
         <div className="contact-wrapper">
@@ -318,7 +465,7 @@ const Homepage = () => {
               </div>
             </a>
             <a
-              href="https://www.google.com/maps?q=Jl.+Manukan+Loka+3/14,+Surabaya,+Jawa+Timur"
+              href="https://maps.app.goo.gl/ufdRPUdnhTnFroYa9"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-item"
@@ -350,7 +497,7 @@ const Homepage = () => {
             <div className="contact-map">
               <iframe
                 title="Lokasi Kantor CV Putra Terbaik"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.6708414783186!2d112.67417877465797!3d-7.246327294702922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbff38103b7f%3A0x73594e75d7e77af4!2sJl.%20Manukan%20Loka%203%2F14%2C%20Manukan%20Wetan%2C%20Tandes%2C%20Surabaya%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1692602535293"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.812612366068!2d112.65972087407279!3d-7.262155392744628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7ff00357d836f%3A0x4c2a504d6a09cb5a!2sCV.%20Putra%20Terbaik!5e0!3m2!1sen!2sid!4v1740200966416!5m2!1sen!2sid"
                 width="100%"
                 height="200"
                 style={{ border: 0, borderRadius: '8px', marginTop: '1rem' }}
