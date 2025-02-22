@@ -2,121 +2,191 @@
 
 /* Section Intro */
 .section-intro {
-    padding: 2rem 40px;
-    background-color: #fff;
-    margin-bottom: 1rem;
-    animation: fadeIn 1.5s ease-in-out;
-  }
-  
+  padding: 2rem 40px;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.section-intro-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0 40px;
+}
+
+.section-intro-content {
+  display: grid;
+  grid-template-columns: minmax(400px, 45%) 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+/* Image Styles */
+.intro-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.image-content {
+  position: relative;
+  background-image: url('../../assets/Homepage/gambar-cv-ai.webp');
+  padding-bottom: 100%; /* Makes it square */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(253,216,53,0.12), transparent);
+  border-radius: 30px;
+  pointer-events: none;
+}
+
+/* Text Content Styles */
+.intro-text-content {
+  max-width: 600px;
+}
+
+.text-content-inner {
+  position: relative;
+}
+
+.text-content-inner h2 {
+  font-size: 3rem;
+  color: #1a1a1a;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.yellow-divider {
+  width: 80px;
+  height: 4px;
+  background: #fdd835;
+  margin: 2rem 0;
+  border-radius: 2px;
+}
+
+.text-paragraphs p {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.3px;
+}
+
+.text-paragraphs p:last-child {
+  margin-bottom: 0;
+}
+
+/* Media Queries */
+@media (max-width: 1400px) {
   .section-intro-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+      gap: 80px;
   }
-  
-  .text-content {
-    padding-right: 40px;
+  .text-content-inner h2 {
+      font-size: 2.75rem;
   }
-  
-  .text-content h2 {
-    font-size: 2.5rem;
-    color: #333;
-    font-weight: 700;
-    margin-bottom: 25px;
-    line-height: 1.3;
-    position: relative;
+}
+
+@media (max-width: 1200px) {
+  .section-intro {
+      padding: 5rem 0;
   }
-  
-  .text-content h2:after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 0;
-    width: 80px;
-    height: 4px;
-    background: #fdd835;
-    border-radius: 2px;
+  .section-intro-content {
+      gap: 60px;
   }
-  
-  .text-content p {
-    font-size: 1.1rem;
-    color: #666;
-    line-height: 1.8;
-    margin-top: 25px;
+  .text-content-inner h2 {
+      font-size: 2.5rem;
   }
-  
-  /* Image Content */
-  .image-content {
-    position: relative;
-    background-image: url('../../assets/Homepage/gambar-cv-ai.webp');
-    height: 450px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease-out;
+}
+
+@media (max-width: 992px) {
+  .section-intro {
+      padding: 4rem 0;
   }
-  
-  .image-content:hover {
-    transform: translateY(-10px);
+  .section-intro-container {
+      padding: 0 30px;
   }
-  
-  .image-content::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, rgba(253,216,53,0.1), transparent);
-    z-index: 1;
-    border-radius: 20px;
-    pointer-events: none;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .section-intro-content {
+  .section-intro-content {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 50px;
+  }
+  .intro-image-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  .intro-text-content {
+      max-width: 700px;
+      margin: 0 auto;
       text-align: center;
-    }
-    .text-content {
-      padding-right: 0;
-    }
-    .text-content h2:after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .image-content {
-      height: 350px;
-    }
   }
-  
-  @media (max-width: 480px) {
-    .section-intro {
-      padding: 2rem 20px;
-    }
-    .text-content h2 {
+  .yellow-divider {
+      margin: 2rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-intro {
+      padding: 3rem 0;
+  }
+  .text-content-inner h2 {
+      font-size: 2.25rem;
+  }
+  .text-paragraphs p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-intro-container {
+      padding: 0 20px;
+  }
+  .section-intro-content {
+      gap: 40px;
+  }
+  .text-content-inner h2 {
       font-size: 2rem;
-    }
-    .text-content p {
+      margin-bottom: 1.5rem;
+  }
+  .yellow-divider {
+      margin: 1.5rem auto;
+  }
+  .text-paragraphs p {
       font-size: 1rem;
-    }
+      margin-bottom: 1.25rem;
   }
-  
-  /* Print Styles */
-  @media print {
-    .section-intro {
-      background: none;
-    }
+}
+
+@media (max-width: 480px) {
+  .section-intro {
+      padding: 2.5rem 0;
   }
-  
+  .section-intro-container {
+      padding: 0 15px;
+  }
+  .text-content-inner h2 {
+      font-size: 1.85rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .section-intro {
+      padding: 1rem 0;
+  }
+  .image-content {
+      box-shadow: none;
+  }
+  .section-intro-content {
+      gap: 40px;
+  }
+}

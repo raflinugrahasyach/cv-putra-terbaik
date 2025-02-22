@@ -3,7 +3,6 @@ import { Element, scroller } from 'react-scroll';
 import { Link as ScrollLink } from 'react-scroll';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { Car, Cpu, ShieldCheck, Scan, DoorClosed } from 'lucide-react';
 
 
 import ContactCTA from '../components/ContactCTA';
@@ -137,78 +136,37 @@ const Homepage = () => {
 
       {/* Section 2: Intro */}
       <section className="section-intro">
-        <div className="section-intro-content">
-          <div className="image-content">
-            {/* background-image diatur di Intro.css */}
-          </div>
-          <div className="text-content">
-            <h2>Kenalin, Solusi Keamanan Terpercaya untuk Bisnis Anda</h2>
-            <p>
-              CV Putra Terbaik adalah mitra terpercaya dalam menyediakan solusi
-              sistem keamanan modern dan efisien. Dengan teknologi terkini, layanan
-              profesional, dan komitmen tinggi, kami membantu bisnis Anda meningkatkan
-              keamanan, produktivitas, dan efisiensi operasional. 
-            </p>
+        <div className="section-intro-container">
+          <div className="section-intro-content">
+            <div className="intro-image-wrapper">
+              <div className="image-content">
+                <div className="image-overlay"></div>
+              </div>
+            </div>
+            <div className="intro-text-content">
+              <div className="text-content-inner">
+                <h2>Kenalin, Solusi Keamanan Terpercaya untuk Bisnis Anda</h2>
+                <div className="yellow-divider"></div>
+                <div className="text-paragraphs">
+                  <p>
+                    CV Putra Terbaik adalah mitra terpercaya dalam menyediakan solusi
+                    sistem keamanan modern dan efisien. Dengan teknologi terkini, layanan
+                    profesional, dan komitmen tinggi, kami membantu bisnis Anda meningkatkan
+                    keamanan, produktivitas, dan efisiensi operasional. 
+                  </p>
+                  <p>
+                    Layanan kami meliputi pengadaan sistem palang parkir otomatis, barrier gate seri MX, seri E, 
+                    paket manless sistem ticket, sistem RFID reader, vehicle loop detector, software custom, 
+                    pos parkir, pos parkir single, box manless dengan touchless button, QR code scanner, 
+                    capture foto dengan IP camera, automatic door closer, automatic magnetic door lock, 
+                    sliding gate yang sudah dipercaya oleh berbagai instansi dan korporasi di seluruh wilayah Indonesia. 
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Section 3: Layanan Kami */}
-      <Element name="services-section" className="services-section">
-        <div className="services-header">
-          <h2>LAYANAN KAMI</h2>
-          <p>Solusi keamanan modern dan efisien untuk mendukung operasional bisnis Anda dengan teknologi terkini</p>
-        </div>
-
-        <div className="services-grid">
-          {[
-            {
-              icon: <Car />,
-              title: "Sistem Parkir Otomatis",
-              items: ["Barrier Gate Seri MX & E", "Pos Parkir Single", "Box Manless System"]
-            },
-            {
-              icon: <Cpu />,
-              title: "Sistem Kontrol Akses",
-              items: ["RFID Reader System", "Vehicle Loop Detector", "Software Custom"]
-            },
-            {
-              icon: <Scan />,
-              title: "Teknologi Scanning",
-              items: ["QR Code Scanner", "Touchless Button", "Capture Foto IP Camera"]
-            },
-            {
-              icon: <DoorClosed />,
-              title: "Otomatisasi Pintu",
-              items: ["Automatic Door Closer", "Magnetic Door Lock", "Sliding Gate"]
-            }
-          ].map((service, index) => (
-            <div key={index} className="service-card">
-              <div className="service-icon">{service.icon}</div>
-              <h3 className="service-title">{service.title}</h3>
-              <ul className="service-list">
-                {service.items.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="trust-banner">
-          <div className="trust-content">
-            <div className="trust-icon">
-              <ShieldCheck />
-            </div>
-            <div className="trust-text">
-              <h3>Dipercaya di Seluruh Indonesia</h3>
-              <p>
-                Solusi keamanan kami telah dipercaya oleh berbagai instansi dan korporasi di seluruh wilayah Indonesia. 
-              </p>
-            </div>
-          </div>
-        </div>
-      </Element>
 
       {/* Section 4: Produk Kami */}
       <Element name="products-section" className="section-products">
@@ -247,83 +205,6 @@ const Homepage = () => {
         <div className="hp-projects-grid-container">
           <div className="hp-projects-grid">
             {/* Project Items */}
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>RS Ortopedi Solo</h3>
-                <p>Solo, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Depo Pertamina Cilacap</h3>
-                <p>Cilacap, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Depo LPG Cilacap</h3>
-                <p>Cilacap, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Jembatan Timbang Pertamina Cilacap</h3>
-                <p>Cilacap, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Sistem Antrian Kendaraan Cilacap</h3>
-                <p>Cilacap, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Sistem Tripod Terminal Tirtonadi Solo</h3>
-                <p>Solo, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Ramayana Gresik</h3>
-                <p>Gresik, Jawa Timur</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Pasar Krempyeng Gresik</h3>
-                <p>Gresik, Jawa Timur</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>RSI Jepara</h3>
-                <p>Jepara, Jawa Tengah</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>RS PKU Muhammadiyah</h3>
-                <p>Jogjakarta</p>
-              </div>
-            </div>
-            <div className="hp-project-item">
-              <div className="hp-project-content">
-                <div className="hp-project-badge">Completed</div>
-                <h3>Bandara International Juanda</h3>
-                <p>Surabaya, Jawa Timur</p>
-              </div>
-            </div>
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
@@ -403,11 +284,87 @@ const Homepage = () => {
                 <p>Surabaya, Jawa Timur</p>
               </div>
             </div>
-
             <div className="hp-project-item">
               <div className="hp-project-content">
                 <div className="hp-project-badge">Completed</div>
                 <h3>Pergudangan Waringin Margomulyo</h3>
+                <p>Surabaya, Jawa Timur</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RS Ortopedi Solo</h3>
+                <p>Solo, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Depo Pertamina Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Depo LPG Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Jembatan Timbang Pertamina Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Sistem Antrian Kendaraan Cilacap</h3>
+                <p>Cilacap, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Sistem Tripod Terminal Tirtonadi Solo</h3>
+                <p>Solo, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Ramayana Gresik</h3>
+                <p>Gresik, Jawa Timur</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Pasar Krempyeng Gresik</h3>
+                <p>Gresik, Jawa Timur</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RSI Jepara</h3>
+                <p>Jepara, Jawa Tengah</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>RS PKU Muhammadiyah</h3>
+                <p>Jogjakarta</p>
+              </div>
+            </div>
+            <div className="hp-project-item">
+              <div className="hp-project-content">
+                <div className="hp-project-badge">Completed</div>
+                <h3>Bandara International Juanda</h3>
                 <p>Surabaya, Jawa Timur</p>
               </div>
             </div>
