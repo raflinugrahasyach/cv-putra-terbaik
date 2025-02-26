@@ -47,6 +47,7 @@ const Projects = () => {
     { id: 19, media: "/assets/Projects/project-vid-2.mp4" },
     { id: 20, media: "/assets/Projects/project-vid-3.mp4" },
     { id: 21, media: "/assets/Projects/project-vid-4.mp4" },
+    { id: 21, media: "/assets/Projects/project-vid-5.mp4" },
   ];
 
   // Fungsi untuk merender ikon overlay dan badge untuk menandai tipe media
