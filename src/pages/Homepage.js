@@ -92,6 +92,11 @@ const Homepage = () => {
       desc: "Sensor deteksi kendaraan untuk manajemen parkir."
     },
     {
+      image: "/assets/Homepage/products/switch_hub_tp_link_8_port.jpg",
+      title: "Switch Hub TP-Link 8 Port",
+      desc: "Switch jaringan desktop dengan 8 port 10/100Mbps."
+    },
+    {
       image: "/assets/Homepage/products/kartu_rfid.jpg",
       title: "Kartu RFID",
       desc: "Kartu pintar untuk akses kontrol yang cepat dan aman."
