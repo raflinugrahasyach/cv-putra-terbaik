@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Homepage from './pages/Homepage';
 import Projects from './pages/Projects';
+import Articles from './pages/Articles';
 import AboutUs from './pages/AboutUs';
 import './Styles/style.css';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/articles" element={<Articles />} />
           <Route path="*" element={<Homepage />} />
         </Routes>
       </div>

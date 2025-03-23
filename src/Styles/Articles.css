@@ -1,0 +1,702 @@
+/* ===========================================
+   Articles.css - Styles for Articles Page
+   Mobile-First Approach with responsive design
+=========================================== */
+
+/* RESET AND GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Import Google Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* ===========================================
+   1. HERO SECTION
+=========================================== */
+.articles-hero {
+  position: relative;
+  background: url('../assets/Articles/articles.png') no-repeat center center/cover;
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.articles-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
+}
+
+.articles-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.articles-hero-content h1 {
+  font-size: 2.5rem;
+  color: #fdd835;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: slideInDown 1s ease-out;
+}
+
+.articles-hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  animation: fadeIn 1.5s ease-in-out;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===========================================
+   2. ARTICLES NAVIGATION
+=========================================== */
+.articles-navigation {
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.articles-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.articles-tabs button {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 4px;
+}
+
+.articles-tabs button::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #fdd835;
+  transition: all 0.3s ease;
+}
+
+.articles-tabs button:hover {
+  color: #333;
+}
+
+.articles-tabs button:hover::after {
+  width: 100%;
+}
+
+.articles-tabs button.active {
+  color: #000;
+  font-weight: 700;
+}
+
+.articles-tabs button.active::after {
+  width: 100%;
+}
+
+/* ===========================================
+   3. ARTICLES CONTENT
+=========================================== */
+.articles-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.article-wrapper {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 3rem;
+  border: 1px solid #f0f0f0;
+}
+
+.article-header {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fafafa;
+}
+
+.article-header h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  animation: slideInLeft 1s ease-out;
+  line-height: 1.3;
+}
+
+.article-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: slideInRight 1s ease-out;
+  line-height: 1.6;
+}
+
+/* Article Image Container */
+.article-image-container {
+  width: 100%;
+  position: relative;
+  max-height: 400px;
+  overflow: hidden;
+  margin: 2rem auto;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.article-main-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+  border-radius: 12px 12px 0 0;
+}
+
+.article-image-container:hover .article-main-image {
+  transform: scale(1.03);
+}
+
+.image-caption {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.article-body {
+  padding: 2.5rem;
+}
+
+.article-section {
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.article-section h3 {
+  font-size: 1.7rem;
+  color: #222;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.article-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #fdd835;
+}
+
+.article-section p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.article-section ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-section ul li {
+  margin-bottom: 0.6rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Article Locations Style */
+.article-locations {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.location-item {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 1.2rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #fdd835;
+}
+
+.location-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+}
+
+.location-icon {
+  font-size: 1.7rem;
+  margin-right: 1rem;
+  color: #555;
+}
+
+.location-text {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+/* Article Types Style */
+.article-types {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.type-card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #e0e0e0;
+}
+
+.type-card h4 {
+  font-size: 1.3rem;
+  color: #222;
+  margin: 0 0 1.2rem 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon Style */
+.type-icon {
+  background: #f8f9fa;
+  border-radius: 50%;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  display: inline-flex;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.type-icon .material-icons {
+  font-size: 2.8rem;
+  color: #fdd835;
+  transition: transform 0.3s ease;
+}
+
+.type-card:hover .type-icon {
+  background: #fef9c3;
+  transform: rotate(-5deg);
+}
+
+.type-card:hover .material-icons {
+  color: #fbc02d;
+  transform: scale(1.1);
+}
+
+/* Type Content */
+.type-content ul {
+  padding-left: 1.5rem;
+  margin-top: 0.8rem;
+}
+
+.type-content li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.type-content li::before {
+  color: #fdd835;
+  font-weight: bold;
+  position: absolute;
+  left: -1.2rem;
+}
+
+/* Benefits Grid Style */
+.benefits-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 1.5rem;
+}
+
+.benefit-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  border-left: 4px solid #fdd835;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.benefit-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-left-color: #fbc02d;
+}
+
+.benefit-icon {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.benefit-icon .material-icons {
+  font-size: 2.5rem;
+  color: #fdd835;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 50%;
+  min-width: 56px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: block;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-item:hover .material-icons {
+  background: #fef9c3;
+  color: #fbc02d;
+  transform: rotate(-5deg);
+  animation: iconPulse 0.6s ease;
+}
+
+.benefit-content h4 {
+  font-size: 1.3rem;
+  color: #2d2d2d;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.benefit-content ul {
+  padding-left: 0;
+  margin: 0;
+}
+
+.benefit-content li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.benefit-content li::before {
+  color: #fdd835;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+
+/* Specific benefit icons */
+.benefit-item:nth-child(3) .material-icons {
+  content: "\e1f5"; /* Gate icon */
+}
+
+.benefit-item:nth-child(4) .material-icons {
+  content: "\e55e"; /* Highway icon */
+  padding: 12px 14px;
+}
+
+/* Integration Section Style */
+.integration-section ul.integration-list {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.7rem 1.7rem 1.7rem 3.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border-left: 4px solid #fdd835;
+}
+
+.integration-section ul.integration-list li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.integration-section ul.integration-list li::before {
+  content: "✓";
+  position: absolute;
+  left: -1.5rem;
+  color: #fdd835;
+  font-weight: bold;
+}
+
+/* Vehicle Loop Detector Specific Styles */
+.detector-types {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.detector-type-item {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  border-left: 4px solid #fdd835;
+}
+
+.detector-type-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Placeholder Image Style */
+.type-image {
+  height: 200px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.type-image::before {
+  content: "Image Coming Soon";
+  position: absolute;
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ===========================================
+   6. CTA SECTION
+=========================================== */
+.article-cta {
+  background: linear-gradient(135deg, #fdd835 0%, #fbc02d 100%);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.article-cta h3 {
+  color: #2d2d2d;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-cta p {
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #222;
+  color: white !important;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-icon {
+  margin-left: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+/* ===========================================
+   7. ANIMATIONS
+=========================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes iconPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ===========================================
+   8. RESPONSIVE ADJUSTMENTS
+=========================================== */
+@media (min-width: 768px) {
+  /* Hero Section */
+  .articles-hero {
+    height: 55vh;
+  }
+  
+  .articles-hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  /* Locations Grid */
+  .article-locations {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Article Types */
+  .article-types {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Main Content */
+  .articles-content {
+    padding: 4rem 2rem;
+  }
+
+  /* Article Types */
+  .article-types {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Integration List */
+  .integration-list {
+    columns: 1;
+    column-gap: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

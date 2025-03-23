@@ -15,18 +15,16 @@ const Navbar = () => {
     e.preventDefault();
     setMenuActive(false);
     if (location.pathname === '/') {
-      // Jika di homepage, scroll ke atas dengan animasi
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
     } else {
-      // Jika di halaman lain, navigasi ke homepage
       window.location.href = '/';
     }
   };
 
-  // PRODUCTS: jika di homepage, scroll; kalau tidak, redirect ke /#products-section
+  // Handler untuk Products
   const handleProductsClick = (e) => {
     e.preventDefault();
     setMenuActive(false);
@@ -41,21 +39,49 @@ const Navbar = () => {
     }
   };
 
+  // Handler untuk Projects
   const handleProjectsClick = (e) => {
     e.preventDefault();
     setMenuActive(false);
     if (location.pathname === '/projects') {
-      // Jika sudah di halaman projects, scroll ke atas dengan animasi
       window.scrollTo({
         top: 0,
         behavior: 'smooth',
       });
     } else {
-      // Jika di halaman lain, navigasi ke projects
       window.location.href = '/projects';
     }
   };
 
+  // Handler untuk articles
+  const handleArticlesClick = (e) => {
+    e.preventDefault();
+    setMenuActive(false);
+    if (location.pathname === '/articles') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      window.location.href = '/articles';
+    }
+  };
+
+  // Handler untuk About Us
+  const handleAboutClick = (e) => {
+    e.preventDefault();
+    setMenuActive(false);
+    if (location.pathname === '/about') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      window.location.href = '/about';
+    }
+  };
+
+  // Handler untuk Contact Us
   const handleContactClick = (e) => {
     e.preventDefault();
     setMenuActive(false);
@@ -95,21 +121,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/about"
-              onClick={(e) => {
-                e.preventDefault();
-                setMenuActive(false);
-                if (location.pathname === '/about') {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                } else {
-                  window.location.href = '/about';
-                }
-              }}
-            >
+            <Link to="/articles" onClick={handleArticlesClick}>
+              ARTICLES
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" onClick={handleAboutClick}>
               ABOUT US
             </Link>
           </li>
