@@ -1,8 +1,0 @@
-# robots.txt for https://www.putraterbaik.com/
-
-User-agent: *
-Disallow: /admin/
-Disallow: /login/
-Allow: /
-
-Sitemap: https://www.putraterbaik.com/sitemap.xml

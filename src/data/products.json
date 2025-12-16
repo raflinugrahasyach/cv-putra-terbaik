@@ -1,0 +1,70 @@
+[
+  {
+    "id": "pos-parkir-single",
+    "title": "Pos Parkir Single",
+    "desc": "Pos parkir efisien untuk kontrol masuk dan keluar kendaraan.",
+    "images": [
+      "/assets/Homepage/products/pos_parkir_single1.jpg",
+      "/assets/Homepage/products/pos_parkir_single2.jpg",
+      "/assets/Homepage/products/pos_parkir_single3.jpg"
+    ]
+  },
+  {
+    "id": "box-dispenser-ticket",
+    "title": "Box Dispenser Ticket",
+    "desc": "Mesin dispenser tiket untuk pengelolaan parkir otomatis.",
+    "images": [
+      "/assets/Homepage/products/box_dispenser_ticket1.jpg",
+      "/assets/Homepage/products/box_dispenser_ticket2.jpg",
+      "/assets/Homepage/products/box_dispenser_ticket3.jpg"
+    ]
+  },
+  {
+    "id": "barrier-gate-e10",
+    "title": "Barrier Gate E10",
+    "desc": "Sistem kontrol akses kendaraan yang andal dan efisien.",
+    "image": "/assets/Homepage/products/barrier_gate_e10.jpg"
+  },
+  {
+    "id": "access-control",
+    "title": "Access Control",
+    "desc": "Sistem kontrol akses pintu yang modern dan aman.",
+    "image": "/assets/Homepage/products/access_control.jpg"
+  },
+  {
+    "id": "ip-camera-hikvision",
+    "title": "IP Camera Hikvision",
+    "desc": "Kamera pengawasan outdoor dengan resolusi 2MP.",
+    "image": "/assets/Homepage/products/ip_camera_hikvision_outdoor_2mp.jpg"
+  },
+  {
+    "id": "rfid-access-control",
+    "title": "RFID Access Control",
+    "desc": "Sistem pengenalan kartu RFID untuk kontrol akses.",
+    "image": "/assets/Homepage/products/rfid_access_control.jpg"
+  },
+  {
+    "id": "touchless-button",
+    "title": "Touchless Button",
+    "desc": "Tombol tanpa sentuh untuk akses pintu otomatis.",
+    "image": "/assets/Homepage/products/touchless_button.jpg"
+  },
+  {
+    "id": "vehicle-loop-detector",
+    "title": "Vehicle Loop Detector",
+    "desc": "Sensor deteksi kendaraan untuk manajemen parkir.",
+    "image": "/assets/Homepage/products/vehicle_loop_detector.jpg"
+  },
+  {
+    "id": "switch-hub-tp-link",
+    "title": "Switch Hub TP-Link 8 Port",
+    "desc": "Switch jaringan desktop dengan 8 port 10/100Mbps.",
+    "image": "/assets/Homepage/products/switch_hub_tp_link_8_port.jpg"
+  },
+  {
+    "id": "kartu-rfid",
+    "title": "Kartu RFID",
+    "desc": "Kartu pintar untuk akses kontrol yang cepat dan aman.",
+    "image": "/assets/Homepage/products/kartu_rfid.jpg"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Rafli/cv-putra-terbaik-v2/src/app/loading.js"],"sourcesContent":["export default function Loading() {\r\n  return (\r\n    <div className=\"fixed inset-0 z-[9999] bg-white flex items-center justify-center\">\r\n      <div className=\"flex flex-col items-center gap-4\">\r\n        {/* Spinner Brand Color */}\r\n        <div className=\"w-12 h-12 border-4 border-slate-200 border-t-brand-600 rounded-full animate-spin\"></div>\r\n        <p className=\"text-slate-500 text-sm font-semibold animate-pulse\">Memuat...</p>\r\n      </div>\r\n    </div>\r\n  );\r\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAI,WAAU;;8BAEb,8OAAC;oBAAI,WAAU;;;;;;8BACf,8OAAC;oBAAE,WAAU;8BAAqD;;;;;;;;;;;;;;;;;AAI1E"}}]
+}

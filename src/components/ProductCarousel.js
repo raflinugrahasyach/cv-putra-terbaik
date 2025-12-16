@@ -1,104 +1,84 @@
-import React, { useRef, useState, useEffect } from 'react';
-import '../Styles/ProductCarousel.css';
+'use client';
 
-const ProductCarousel = ({ images, interval = 4000 }) => {
-  const containerRef = useRef(null);
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const ProductCarousel = ({ images, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Update current slide index berdasarkan scrollLeft
-  const updateCurrentIndex = () => {
-    const container = containerRef.current;
-    if (container) {
-      const index = Math.round(container.scrollLeft / container.clientWidth);
-      setCurrentIndex(index);
-    }
+  // Fungsi Next Slide
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
 
-  // Auto-scroll effect
+  // Fungsi Prev Slide
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  // Auto Slide Logic
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const totalSlides = images.length;
-    const autoScroll = setInterval(() => {
-      let nextIndex = currentIndex + 1;
-      if (nextIndex >= totalSlides) {
-        nextIndex = 0;
-      }
-      container.scrollTo({
-        left: container.clientWidth * nextIndex,
-        behavior: 'smooth'
-      });
-      setCurrentIndex(nextIndex);
+    // Kalau mouse lagi di atas gambar (hover), jangan auto slide
+    if (isHovered) return;
+
+    const slideInterval = setInterval(() => {
+      nextSlide();
     }, interval);
 
-    return () => clearInterval(autoScroll);
-  }, [images, interval, currentIndex]);
+    return () => clearInterval(slideInterval);
+  }, [currentIndex, isHovered, interval]);
 
-  // Update current index saat manual scroll
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    container.addEventListener('scroll', updateCurrentIndex);
-    return () => container.removeEventListener('scroll', updateCurrentIndex);
-  }, []);
-
-  // Fungsi untuk navigasi manual
-  const handlePrev = () => {
-    const container = containerRef.current;
-    if (!container) return;
-    let prevIndex = currentIndex - 1;
-    if (prevIndex < 0) {
-      prevIndex = images.length - 1;
-    }
-    container.scrollTo({
-      left: container.clientWidth * prevIndex,
-      behavior: 'smooth'
-    });
-    setCurrentIndex(prevIndex);
-  };
-
-  const handleNext = () => {
-    const container = containerRef.current;
-    if (!container) return;
-    let nextIndex = currentIndex + 1;
-    if (nextIndex >= images.length) {
-      nextIndex = 0;
-    }
-    container.scrollTo({
-      left: container.clientWidth * nextIndex,
-      behavior: 'smooth'
-    });
-    setCurrentIndex(nextIndex);
+  // Mencegah klik link parent saat klik tombol navigasi
+  const handleManualNav = (e, action) => {
+    e.preventDefault();
+    e.stopPropagation();
+    action();
   };
 
   return (
-    <div className="carousel-wrapper">
-      <div className="carousel-container" ref={containerRef}>
-        {images.map((img, idx) => (
-          <img
-            key={idx}
-            src={img}
-            alt={`Slide ${idx + 1}`}
-            className="carousel-image"
-          />
-        ))}
+    <div 
+      className="relative w-full h-full group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Image Display */}
+      <div className="w-full h-full relative">
+        <Image
+          src={images[currentIndex]}
+          alt="Product Slide"
+          fill
+          className="object-cover transition-all duration-700" // Durasi transisi diperhalus
+        />
       </div>
-      <button
-        onClick={handlePrev}
-        className="carousel-button carousel-button-prev"
-        aria-label="Previous Slide"
+
+      {/* Tombol Kiri (Muncul saat hover) */}
+      <button 
+        onClick={(e) => handleManualNav(e, prevSlide)}
+        className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/40 hover:bg-brand-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 backdrop-blur-sm"
       >
-        &#10094;
+        <ChevronLeft size={20} />
       </button>
-      <button
-        onClick={handleNext}
-        className="carousel-button carousel-button-next"
-        aria-label="Next Slide"
+
+      {/* Tombol Kanan (Muncul saat hover) */}
+      <button 
+        onClick={(e) => handleManualNav(e, nextSlide)}
+        className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/40 hover:bg-brand-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 backdrop-blur-sm"
       >
-        &#10095;
+        <ChevronRight size={20} />
       </button>
-      <div className="carousel-indicator">
-        {currentIndex + 1} / {images.length}
+
+      {/* Indikator Titik Bawah */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/20 px-2 py-1 rounded-full backdrop-blur-[2px]">
+        {images.map((_, slideIndex) => (
+          <div
+            key={slideIndex}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              currentIndex === slideIndex ? 'bg-white w-6' : 'bg-white/50 w-1.5'
+            }`}
+          ></div>
+        ))}
       </div>
     </div>
   );

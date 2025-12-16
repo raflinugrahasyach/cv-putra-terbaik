@@ -1,143 +1,102 @@
-// src/components/Navbar.js
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { scroller } from 'react-scroll';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import '../Styles/Navbar.css';
 
 const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setMenuActive(!menuActive);
 
-  // Handler untuk tombol Home
-  const handleHomeClick = (e) => {
-    e.preventDefault();
-    setMenuActive(false);
-    if (location.pathname === '/') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    } else {
-      window.location.href = '/';
-    }
-  };
+  // Efek transparan ke solid saat scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-  // Handler untuk Products
-  const handleProductsClick = (e) => {
-    e.preventDefault();
-    setMenuActive(false);
-    if (location.pathname === '/') {
-      scroller.scrollTo('products-section', {
-        smooth: true,
-        duration: 700,
-        offset: -70,
-      });
-    } else {
-      window.location.href = '/#products-section';
-    }
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  // Handler untuk Projects
-  const handleProjectsClick = (e) => {
+  // Fungsi helper untuk navigasi hash yang aman
+  const handleScrollNavigation = (e, target) => {
     e.preventDefault();
     setMenuActive(false);
-    if (location.pathname === '/projects') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    } else {
-      window.location.href = '/projects';
-    }
-  };
 
-  // Handler untuk articles
-  const handleArticlesClick = (e) => {
-    e.preventDefault();
-    setMenuActive(false);
-    if (location.pathname === '/articles') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+    if (pathname === '/') {
+      // Jika sudah di homepage, langsung scroll
+      if (target === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        scroller.scrollTo(target, {
+          smooth: true,
+          duration: 700,
+          offset: -70,
+        });
+      }
     } else {
-      window.location.href = '/articles';
-    }
-  };
-
-  // Handler untuk About Us
-  const handleAboutClick = (e) => {
-    e.preventDefault();
-    setMenuActive(false);
-    if (location.pathname === '/about') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    } else {
-      window.location.href = '/about';
-    }
-  };
-
-  // Handler untuk Contact Us
-  const handleContactClick = (e) => {
-    e.preventDefault();
-    setMenuActive(false);
-    if (location.pathname === '/') {
-      scroller.scrollTo('contact-section', {
-        smooth: true,
-        duration: 1300,
-        offset: -70,
-      });
-    } else {
-      window.location.href = '/#contact-section';
+      // Jika di halaman lain, pindah ke homepage dulu
+      if (target === 'top') {
+        router.push('/');
+      } else {
+        // Next.js butuh waktu load, kita arahkan ke URL hash
+        router.push(`/#${target}`);
+      }
     }
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-logo">
-          <Link to="/" onClick={handleHomeClick} className="logo-text">
+          <Link href="/" onClick={(e) => handleScrollNavigation(e, 'top')} className="logo-text">
             CV PUTRA TERBAIK
           </Link>
         </div>
         <ul className={`navbar-menu ${menuActive ? 'active' : ''}`}>
           <li>
-            <Link to="/" onClick={handleHomeClick}>
+            <Link href="/" onClick={(e) => handleScrollNavigation(e, 'top')}>
               HOME
             </Link>
           </li>
           <li>
-            <Link to="/#products-section" onClick={handleProductsClick}>
+            <a href="/#products-section" onClick={(e) => handleScrollNavigation(e, 'products-section')}>
               PRODUCTS
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to="/projects" onClick={handleProjectsClick}>
+            <Link href="/projects" onClick={() => setMenuActive(false)}>
               PROJECTS
             </Link>
           </li>
           <li>
-            <Link to="/articles" onClick={handleArticlesClick}>
+            <Link href="/articles" onClick={() => setMenuActive(false)}>
               ARTICLES
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={handleAboutClick}>
+            <Link href="/about" onClick={() => setMenuActive(false)}>
               ABOUT US
             </Link>
           </li>
           <li>
-            <Link
-              to="/#contact-section"
+            <a
+              href="/#contact-section"
               className="btn-contact"
-              onClick={handleContactClick}
+              onClick={(e) => handleScrollNavigation(e, 'contact-section')}
             >
               CONTACT US
-            </Link>
+            </a>
           </li>
         </ul>
         <div className="navbar-toggle" onClick={toggleMenu}>
