@@ -1,0 +1,8 @@
+module.exports=[72123,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(11857);a.n(d("[project]/node_modules/next/dist/client/script.js <module evaluation>"))},44536,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(11857);a.n(d("[project]/node_modules/next/dist/client/script.js"))},11153,a=>{"use strict";a.i(72123);var b=a.i(44536);a.n(b)},71618,(a,b,c)=>{b.exports=a.r(11153)},29735,a=>{"use strict";var b=a.i(7997),c=a.i(71618);function d({children:a}){return(0,b.jsx)("html",{lang:"id",className:"scroll-smooth",children:(0,b.jsxs)("body",{className:"antialiased text-slate-900",children:[(0,b.jsx)(c.default,{strategy:"afterInteractive",src:"https://www.googletagmanager.com/gtag/js?id=G-RYVG9EY6E4"}),(0,b.jsx)(c.default,{id:"google-analytics",strategy:"afterInteractive",children:`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RYVG9EY6E4');
+          `}),a]})})}a.s(["default",()=>d,"metadata",0,{title:{template:"%s | CV Putra Terbaik",default:"CV Putra Terbaik - Solusi Sistem Parkir & Keamanan Otomatis"},description:"Spesialis pengadaan dan instalasi Barrier Gate, Sistem Parkir Manless, dan Access Control terpercaya di Surabaya dan seluruh Indonesia.",icons:{icon:"/favicon.ico"},keywords:["Barrier Gate","Sistem Parkir","Palang Parkir","Surabaya","Keamanan"]}])}];
+
+//# sourceMappingURL=_63be9336._.js.map

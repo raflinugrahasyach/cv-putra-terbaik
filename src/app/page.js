@@ -95,10 +95,11 @@ export default function Homepage() {
               {/* Gambar Engineer (Proporsional) */}
               <div className="relative w-full aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white order-2 lg:order-1">
                 <Image 
-                  src="/assets/Homepage/about-us-pro.png" 
+                  src="/assets/Homepage/about-us-pro.webp" 
                   alt="Tentang Kami" 
                   fill 
-                  className="object-cover object-top hover:scale-105 transition-transform duration-700" 
+                  className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                  priority={true} 
                 />
               </div>
 

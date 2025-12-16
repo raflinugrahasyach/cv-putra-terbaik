@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion'; // <--- JANGAN LUPA IMPORT INI
 import NavbarModern from '../../components/NavbarModern';
 import FooterModern from '../../components/FooterModern';
 import FloatingWhatsApp from '../../components/FloatingWhatsApp';
@@ -16,18 +17,30 @@ export default function ArticlesPage() {
   const [activeTab, setActiveTab] = useState('barrier-gate');
 
   return (
-    <main className="bg-white min-h-screen flex flex-col">
+    <main className="bg-white min-h-screen flex flex-col font-sans selection:bg-brand-100 selection:text-brand-900">
       <NavbarModern />
       <FloatingWhatsApp />
 
-      {/* HEADER SECTION (CLEANER) */}
-      <div className="bg-slate-50 pt-32 pb-16 px-6 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto">
-           <span className="text-brand-600 font-bold tracking-wider text-xs uppercase mb-2 block">Knowledge Base</span>
-           <h1 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4">Pusat Informasi & Teknologi</h1>
-           <p className="text-lg text-slate-600 max-w-2xl">
-             Pelajari spesifikasi teknis, cara kerja, dan manfaat solusi keamanan modern kami.
-           </p>
+      {/* HEADER SECTION (Sekarang sudah ada Animasinya) */}
+      <div className="bg-slate-50 pt-32 pb-20 px-6 border-b border-slate-200">
+        <div className="max-w-4xl mx-auto text-center">
+           {/* Bungkus dengan motion.div */}
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6 }}
+           >
+             <span className="inline-block py-1.5 px-4 rounded-full bg-green-100 text-green-600 text-xs font-bold tracking-wider mb-6 uppercase">
+               Knowledge Base
+             </span>
+             <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+               Pusat Informasi & Teknologi
+             </h1>
+             <p className="text-lg text-slate-600 leading-relaxed">
+               Pelajari spesifikasi teknis, cara kerja, dan manfaat solusi keamanan modern 
+               untuk membantu Anda mengambil keputusan terbaik.
+             </p>
+           </motion.div>
         </div>
       </div>
 
@@ -92,14 +105,18 @@ export default function ArticlesPage() {
             
             {/* === KONTEN 1: BARRIER GATE === */}
             {activeTab === 'barrier-gate' && (
-              <article className="animate-fade-in">
+              <motion.article 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5 }}
+              >
                 <div className="mb-10">
                    <span className="text-brand-600 font-bold text-sm mb-2 block">PRODUK UNGGULAN</span>
                    <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
                      Barrier Gate: Solusi Keamanan Modern
                    </h2>
                    <div className="relative w-full h-[350px] lg:h-[450px] rounded-2xl overflow-hidden shadow-lg mb-8">
-                      <Image src="/assets/Homepage/products/barrier_gate_e10.jpg" alt="Barrier Gate" fill className="object-cover" />
+                      <Image src="/assets/Homepage/products/barrier_gate_e10.webp" alt="Barrier Gate" fill className="object-cover" />
                    </div>
                 </div>
 
@@ -132,19 +149,23 @@ export default function ArticlesPage() {
                      </ul>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             )}
 
             {/* === KONTEN 2: VEHICLE LOOP === */}
             {activeTab === 'vehicle-loop-detector' && (
-              <article className="animate-fade-in">
+              <motion.article 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5 }}
+              >
                 <div className="mb-10">
                    <span className="text-brand-600 font-bold text-sm mb-2 block">TEKNOLOGI SENSOR</span>
                    <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
                      Vehicle Loop Detector Technology
                    </h2>
                    <div className="relative w-full h-[350px] lg:h-[450px] rounded-2xl overflow-hidden shadow-lg mb-8">
-                      <Image src="/assets/Homepage/products/vehicle_loop_detector.jpg" alt="Vehicle Loop" fill className="object-cover" />
+                      <Image src="/assets/Homepage/products/vehicle_loop_detector.webp" alt="Vehicle Loop" fill className="object-cover" />
                    </div>
                 </div>
 
@@ -175,7 +196,7 @@ export default function ArticlesPage() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             )}
 
             {/* GLOBAL CTA DI BAWAH ARTIKEL */}

@@ -68,14 +68,15 @@ const FooterModern = () => {
           </ul>
         </div>
 
-        {/* KOLOM 3: Solusi (Pengganti Brosur) */}
+        {/* KOLOM 3: KATEGORI PRODUK (Lebih Luas & Mengundang Klik) */}
         <div className="flex flex-col">
-          <h4 className="text-white text-lg font-bold mb-6">Solusi Kami</h4>
+          <h4 className="text-white text-lg font-bold mb-6">Kategori Produk</h4>
           <ul className="space-y-3">
-            <FooterLink href="/articles" text="Barrier Gate System" />
-            <FooterLink href="/articles" text="Vehicle Loop Detector" />
-            <FooterLink href="/#produk" text="Manless Parkir" />
-            <FooterLink href="/#produk" text="Access Control RFID" />
+            <FooterLink href="/#produk" text="Sistem Parkir & Barrier Gate" />
+            <FooterLink href="/#produk" text="Access Control & RFID" />
+            <FooterLink href="/#produk" text="Vehicle Loop Detector" />
+            <FooterLink href="/#produk" text="Kamera CCTV & Keamanan" />
+            <FooterLink href="/#produk" text="Sparepart & Aksesoris" />
           </ul>
         </div>
 
