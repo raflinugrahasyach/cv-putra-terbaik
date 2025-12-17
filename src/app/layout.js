@@ -2,11 +2,21 @@ import './globals.css';
 import Script from 'next/script'; // <--- BARIS INI WAJIB ADA JIKA PAKAI GA
 
 export const metadata = {
+  metadataBase: new URL('https://www.putraterbaik.com'),
   title: {
     template: '%s | CV Putra Terbaik',
     default: 'CV Putra Terbaik - Solusi Sistem Parkir & Keamanan Otomatis',
   },
   description: 'Spesialis pengadaan dan instalasi Barrier Gate, Sistem Parkir Manless, dan Access Control terpercaya di Surabaya dan seluruh Indonesia.',
+  alternates: {
+    canonical: '/',
+  },
+  
+  // Agar robot Google semangat crawl
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: '/favicon.ico', // Pastikan file favicon.ico ada di folder public
   },
