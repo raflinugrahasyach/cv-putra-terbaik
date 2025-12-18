@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script'; // <--- TAMBAHAN IMPORT
 import { motion } from 'framer-motion';
 import { Search, MessageCircle, ArrowRight, CheckCircle2, MapPin, Phone, Mail } from 'lucide-react';
 
@@ -27,8 +28,37 @@ export default function Homepage() {
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // --- TAMBAHAN BARU (Schema Markup Tokopedia Style) ---
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    'name': 'CV Putra Terbaik',
+    'image': 'https://www.putraterbaik.com/assets/opengraph-image.png', // Gambar Utama
+    'description': 'Spesialis Barrier Gate dan Sistem Parkir Surabaya.',
+    'telephone': '+628113863270',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': 'Surabaya', 
+      'addressLocality': 'Surabaya',
+      'addressRegion': 'Jawa Timur',
+      'addressCountry': 'ID'
+    },
+    'url': 'https://www.putraterbaik.com',
+    'priceRange': '$$'
+  };
+  // ----------------------------------------------------
+
   return (
     <main className="relative min-h-screen overflow-hidden selection:bg-brand-100 selection:text-brand-900 bg-slate-50">
+      
+      {/* --- SUNTIKAN SCRIPT JSON-LD --- */}
+      <Script
+        id="json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* ------------------------------- */}
+
       <NavbarModern />
       <AuroraBackground />
       <FloatingWhatsApp />
