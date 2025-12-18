@@ -1,18 +1,32 @@
 [
   {
-    "id": "pos-parkir-single",
-    "title": "Pos Parkir Single",
-    "desc": "Pos parkir efisien untuk kontrol masuk dan keluar kendaraan.",
-    "images": [
-      "/assets/Homepage/products/pos_parkir_single1.webp",
-      "/assets/Homepage/products/pos_parkir_single2.webp",
-      "/assets/Homepage/products/pos_parkir_single3.webp"
-    ]
+    "id": "sistem-parkir-terintegrasi",
+    "title": "Sistem Parkir 2 Pintu",
+    "desc": "Solusi manajemen parkir lengkap dengan dua pintu masuk/keluar untuk traffic tinggi.",
+    "image": "/assets/Homepage/products/sistem_parkir_2_pintu_masuk.webp"
+  },
+  {
+    "id": "barrier-gate-mx50",
+    "title": "Barrier Gate MX-50",
+    "desc": "Palang parkir heavy duty dengan kecepatan buka-tutup yang stabil dan tahan lama.",
+    "image": "/assets/Homepage/products/produk_barrier_gate_mx50.webp"
+  },
+  {
+    "id": "barrier-gate-e10",
+    "title": "Barrier Gate E10",
+    "desc": "Sistem palang parkir ekonomis yang handal dan efisien untuk perumahan atau ruko.",
+    "image": "/assets/Homepage/products/barrier_gate_e10.webp"
+  },
+  {
+    "id": "box-manless-rfid",
+    "title": "Box Manless RFID Reader",
+    "desc": "Dispenser tiket otomatis yang terintegrasi dengan pembaca kartu RFID.",
+    "image": "/assets/Homepage/products/box_manless_rfid_reader.webp"
   },
   {
     "id": "box-dispenser-ticket",
-    "title": "Box Dispenser Ticket",
-    "desc": "Mesin dispenser tiket untuk pengelolaan parkir otomatis.",
+    "title": "Box Dispenser Tiket",
+    "desc": "Mesin dispenser tiket parkir otomatis dengan desain kokoh dan tahan cuaca.",
     "images": [
       "/assets/Homepage/products/box_dispenser_ticket1.webp",
       "/assets/Homepage/products/box_dispenser_ticket2.webp",
@@ -20,51 +34,74 @@
     ]
   },
   {
-    "id": "barrier-gate-e10",
-    "title": "Barrier Gate E10",
-    "desc": "Sistem kontrol akses kendaraan yang andal dan efisien.",
-    "image": "/assets/Homepage/products/barrier_gate_e10.webp"
+    "id": "pos-parkir-single",
+    "title": "Pos Parkir Single",
+    "desc": "Pos jaga operator ergonomis untuk kontrol manual pintu masuk dan keluar.",
+    "images": [
+      "/assets/Homepage/products/pos_parkir_single1.webp",
+      "/assets/Homepage/products/pos_parkir_single2.webp",
+      "/assets/Homepage/products/pos_parkir_single3.webp",
+      "/assets/Homepage/products/pos_parkir_single4.webp"
+    ]
   },
   {
-    "id": "access-control",
-    "title": "Access Control",
-    "desc": "Sistem kontrol akses pintu yang modern dan aman.",
-    "image": "/assets/Homepage/products/access_control.webp"
+    "id": "tiang-rfid-reader",
+    "title": "Tiang RFID Reader",
+    "desc": "Tiang mounting khusus (Gooseneck) untuk pemasangan reader kartu akses kendaraan.",
+    "image": "/assets/Homepage/products/tiang_rfid_reader.webp"
+  },
+  {
+    "id": "ip-camera-parking",
+    "title": "IP Camera Parking System",
+    "desc": "Kamera khusus sistem parkir untuk capture plat nomor kendaraan dengan jelas.",
+    "image": "/assets/Homepage/products/ip_camera_parking_system.webp"
   },
   {
     "id": "ip-camera-hikvision",
     "title": "IP Camera Hikvision",
-    "desc": "Kamera pengawasan outdoor dengan resolusi 2MP.",
+    "desc": "Kamera pengawas tahan cuaca resolusi tinggi untuk keamanan area luas.",
     "image": "/assets/Homepage/products/ip_camera_hikvision_outdoor_2mp.webp"
+  },
+  {
+    "id": "barcode-qr-scanner",
+    "title": "Barcode & QR Code Scanner",
+    "desc": "Pemindai kode cepat untuk tiket pengunjung atau akses aplikasi digital.",
+    "image": "/assets/Homepage/products/barcode_or_qr_code_scanner.webp"
   },
   {
     "id": "rfid-access-control",
     "title": "RFID Access Control",
-    "desc": "Sistem pengenalan kartu RFID untuk kontrol akses.",
+    "desc": "Panel akses kontrol pintu dengan PIN dan kartu RFID untuk keamanan gedung.",
     "image": "/assets/Homepage/products/rfid_access_control.webp"
   },
   {
+    "id": "access-control-system",
+    "title": "Door Access Control",
+    "desc": "Unit kontrol akses pintu terintegrasi untuk manajemen keluar-masuk ruangan.",
+    "image": "/assets/Homepage/products/access_control.webp"
+  },
+  {
     "id": "touchless-button",
-    "title": "Touchless Button",
-    "desc": "Tombol tanpa sentuh untuk akses pintu otomatis.",
+    "title": "Touchless Exit Button",
+    "desc": "Tombol keluar tanpa sentuh (inframerah) yang higienis dan modern.",
     "image": "/assets/Homepage/products/touchless_button.webp"
   },
   {
     "id": "vehicle-loop-detector",
     "title": "Vehicle Loop Detector",
-    "desc": "Sensor deteksi kendaraan untuk manajemen parkir.",
+    "desc": "Sensor tanam cerdas untuk mendeteksi logam kendaraan di area palang.",
     "image": "/assets/Homepage/products/vehicle_loop_detector.webp"
   },
   {
-    "id": "switch-hub-tp-link",
-    "title": "Switch Hub TP-Link 8 Port",
-    "desc": "Switch jaringan desktop dengan 8 port 10/100Mbps.",
-    "image": "/assets/Homepage/products/switch_hub_tp_link_8_port.webp"
+    "id": "kartu-rfid",
+    "title": "Kartu Akses RFID",
+    "desc": "Kartu pintar (Smart Card) frekuensi khusus untuk akses parkir dan gedung.",
+    "image": "/assets/Homepage/products/kartu_rfid.webp"
   },
   {
-    "id": "kartu-rfid",
-    "title": "Kartu RFID",
-    "desc": "Kartu pintar untuk akses kontrol yang cepat dan aman.",
-    "image": "/assets/Homepage/products/kartu_rfid.webp"
+    "id": "switch-hub-tp-link",
+    "title": "Switch Hub Network 8 Port",
+    "desc": "Perangkat jaringan untuk menghubungkan sistem parkir dan CCTV ke server.",
+    "image": "/assets/Homepage/products/switch_hub_tp_link_8_port.webp"
   }
 ]

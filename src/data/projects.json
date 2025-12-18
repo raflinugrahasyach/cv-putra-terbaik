@@ -14,10 +14,8 @@
   { "id": 13, "media": "/assets/Projects/project-13.jpg", "type": "image", "category": "Instansi" },
   { "id": 14, "media": "/assets/Projects/project-14.jpg", "type": "image", "category": "Instansi" },
   { "id": 15, "media": "/assets/Projects/project-15.jpg", "type": "image", "category": "Instansi" },
-  { "id": 16, "media": "/assets/Projects/project-16.jpg", "type": "image", "category": "Instansi" },
-  { "id": 17, "media": "/assets/Projects/project-17.jpg", "type": "image", "category": "Transportasi" },
-  { "id": 18, "media": "/assets/Projects/project-vid-1.mp4", "type": "video", "category": "Mall/Retail" },
-  { "id": 19, "media": "/assets/Projects/project-vid-2.mp4", "type": "video", "category": "Mall/Retail" },
-  { "id": 20, "media": "/assets/Projects/project-vid-3.mp4", "type": "video", "category": "Rumah Sakit" },
-  { "id": 21, "media": "/assets/Projects/project-vid-4.mp4", "type": "video", "category": "Rumah Sakit" }
+  { "id": 17, "media": "/assets/Projects/project-vid-1.mp4", "type": "video", "category": "Mall/Retail" },
+  { "id": 18, "media": "/assets/Projects/project-vid-2.mp4", "type": "video", "category": "Mall/Retail" },
+  { "id": 19, "media": "/assets/Projects/project-vid-3.mp4", "type": "video", "category": "Rumah Sakit" },
+  { "id": 20, "media": "/assets/Projects/project-vid-4.mp4", "type": "video", "category": "Rumah Sakit" }
 ]
