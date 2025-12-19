@@ -17,5 +17,10 @@
   { "id": 17, "media": "/assets/Projects/project-vid-1.mp4", "type": "video", "category": "Mall/Retail" },
   { "id": 18, "media": "/assets/Projects/project-vid-2.mp4", "type": "video", "category": "Mall/Retail" },
   { "id": 19, "media": "/assets/Projects/project-vid-3.mp4", "type": "video", "category": "Rumah Sakit" },
-  { "id": 20, "media": "/assets/Projects/project-vid-4.mp4", "type": "video", "category": "Rumah Sakit" }
+  { "id": 20, "media": "/assets/Projects/project-vid-4.mp4", "type": "video", "category": "Rumah Sakit" },
+  { "id": 21, "media": "/assets/Projects/project-vid-5.mp4", "type": "video", "category": "Mall/Retail" },
+  { "id": 22, "media": "/assets/Projects/project-vid-6.mp4", "type": "video", "category": "Mall/Retail" },
+  { "id": 23, "media": "/assets/Projects/project-vid-7.mp4", "type": "video", "category": "Rumah Sakit" },
+  { "id": 24, "media": "/assets/Projects/project-vid-8.mp4", "type": "video", "category": "Mall/Retail" },
+  { "id": 25, "media": "/assets/Projects/project-vid-9.mp4", "type": "video", "category": "Mall/Retail" }
 ]
