@@ -10,7 +10,7 @@ import FloatingWhatsApp from '../../components/FloatingWhatsApp';
 import { 
   ShieldCheck, BarChart3, Zap, Clock, Building2, Hospital, ShoppingCart, 
   Plane, Home, Factory, ArrowRight, Settings2, PowerOff, Activity, Move, 
-  TrafficCone, ParkingCircle, DoorOpen, ChevronRight
+  TrafficCone, ParkingCircle, DoorOpen, ChevronRight, CreditCard, Radio
 } from 'lucide-react';
 
 export default function ArticlesPage() {
@@ -72,6 +72,16 @@ export default function ArticlesPage() {
               >
                 Vehicle Loop Detector
               </button>
+              <button 
+                onClick={() => setActiveTab('rfid-reader')}
+                className={`text-left px-4 py-3 text-sm font-medium border-l-2 -ml-[2px] transition-all hover:bg-slate-50 ${
+                  activeTab === 'rfid-reader' 
+                  ? 'border-brand-600 text-brand-600 bg-brand-50/50' 
+                  : 'border-transparent text-slate-500 hover:text-slate-900'
+                }`}
+              >
+                RFID Reader System
+              </button>
             </div>
 
             {/* Banner Kecil di Sidebar */}
@@ -97,6 +107,12 @@ export default function ArticlesPage() {
                 className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold ${activeTab === 'vehicle-loop-detector' ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-600'}`}
              >
                Vehicle Loop Detector
+             </button>
+             <button 
+                onClick={() => setActiveTab('rfid-reader')}
+                className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold ${activeTab === 'rfid-reader' ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-600'}`}
+             >
+               RFID Reader
              </button>
           </div>
 
@@ -194,6 +210,94 @@ export default function ArticlesPage() {
                       <h5 className="font-bold text-sm">Slot Counter</h5>
                       <p className="text-xs text-slate-500">Menghitung sisa parkir.</p>
                     </div>
+                  </div>
+                </div>
+              </motion.article>
+            )}
+
+            {/* === KONTEN 3: RFID READER === */}
+            {activeTab === 'rfid-reader' && (
+              <motion.article 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.5 }}
+              >
+                <div className="mb-10">
+                   <span className="text-brand-600 font-bold text-sm mb-2 block">AKSES KONTROL PINTAR</span>
+                   <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
+                     RFID Reader & Access Card
+                   </h2>
+                   
+                   {/* Grid Foto Produk */}
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                     <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-lg group">
+                        <Image 
+                          src="/assets/Homepage/products/tiang_rfid_reader.webp" 
+                          alt="Tiang RFID Reader" 
+                          fill 
+                          className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                          <p className="text-white font-bold text-sm">Tiang Reader Standalone</p>
+                        </div>
+                     </div>
+                     <div className="relative w-full h-[300px] rounded-2xl overflow-hidden shadow-lg group">
+                        <Image 
+                          src="/assets/Homepage/products/kartu_rfid.webp" 
+                          alt="Kartu Akses RFID" 
+                          fill 
+                          className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                          <p className="text-white font-bold text-sm">Kartu Akses Premium</p>
+                        </div>
+                     </div>
+                   </div>
+                </div>
+
+                <div className="prose prose-slate max-w-none">
+                  <h3 className="text-xl font-bold text-slate-900">Teknologi Identifikasi Otomatis</h3>
+                  <p className="text-slate-600 leading-relaxed mb-6">
+                    Radio Frequency Identification (RFID) Reader adalah perangkat pemindai tanpa kontak fisik yang membaca data dari kartu akses atau tag kendaraan. Teknologi ini menjadi standar utama untuk sistem parkir berlangganan (member) dan akses kontrol gedung karena kecepatan dan kemudahannya.
+                  </p>
+
+                  <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Keunggulan Sistem RFID</h3>
+                  <div className="grid md:grid-cols-2 gap-4 not-prose mb-8">
+                      <TechCard title="Touchless Access" desc="Cukup tap kartu dari jarak dekat (Proximity) atau jauh (Long Range)." />
+                      <TechCard title="High Security" desc="Data terenkripsi, sulit diduplikasi oleh pihak tidak berwenang." />
+                      <TechCard title="Durable Hardware" desc="Tiang reader berbahan metal tahan cuaca (IP65) untuk outdoor." />
+                      <TechCard title="Fast Response" desc="Waktu baca <0.2 detik, mengurangi antrian di pintu masuk." />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Aplikasi Penggunaan</h3>
+                  <div className="flex flex-wrap gap-2 not-prose mb-8">
+                    {["Member Parkir", "Akses Apartemen", "Absensi Karyawan", "VIP Access", "Toll Road", "Gudang Logistik"].map(tag => (
+                      <span key={tag} className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-md font-medium border border-blue-100">{tag}</span>
+                    ))}
+                  </div>
+
+                  <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 not-prose my-8">
+                     <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                       <CreditCard className="text-brand-600" size={20}/> Spesifikasi Umum
+                     </h4>
+                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8">
+                        <li className="flex justify-between text-sm border-b border-slate-200 pb-2">
+                          <span className="text-slate-500">Frekuensi Kerja</span>
+                          <span className="font-medium text-slate-900">125 KHz / 13.56 MHz / UHF</span>
+                        </li>
+                        <li className="flex justify-between text-sm border-b border-slate-200 pb-2">
+                          <span className="text-slate-500">Jarak Baca</span>
+                          <span className="font-medium text-slate-900">5 cm - 10 Meter (Tergantung Tipe)</span>
+                        </li>
+                        <li className="flex justify-between text-sm border-b border-slate-200 pb-2">
+                          <span className="text-slate-500">Material Tiang</span>
+                          <span className="font-medium text-slate-900">Powder Coated Steel / Stainless</span>
+                        </li>
+                        <li className="flex justify-between text-sm border-b border-slate-200 pb-2">
+                          <span className="text-slate-500">Konektivitas</span>
+                          <span className="font-medium text-slate-900">TCP/IP, Wiegand, RS485</span>
+                        </li>
+                     </ul>
                   </div>
                 </div>
               </motion.article>
