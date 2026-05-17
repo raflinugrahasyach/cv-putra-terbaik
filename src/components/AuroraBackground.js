@@ -8,58 +8,59 @@ export default function AuroraBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
+
     let time = 0;
-    
+    // ── FIX: store RAF handle so we can cancel on unmount ──────────────────
+    let rafId = null;
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
     const animate = () => {
-      time += 0.002; // Kecepatan animasi
+      time += 0.002;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Efek Gradasi Merah (Brand Color)
+      // Brand red gradient (static anchor)
       const gradient1 = ctx.createRadialGradient(
         canvas.width * 0.2, canvas.height * 0.2, 0,
         canvas.width * 0.2, canvas.height * 0.2, canvas.width * 0.6
       );
-      // Warna: Merah Soft -> Transparan
-      gradient1.addColorStop(0, 'rgba(220, 38, 38, 0.08)'); 
+      gradient1.addColorStop(0, 'rgba(220, 38, 38, 0.08)');
       gradient1.addColorStop(1, 'rgba(220, 38, 38, 0)');
-      
       ctx.fillStyle = gradient1;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Efek Gradasi Emas (Accent Color) - Bergerak
+      // Accent gold gradient (animated)
       const x2 = canvas.width * 0.8 + Math.cos(time) * 100;
       const y2 = canvas.height * 0.8 + Math.sin(time) * 50;
-      
-      const gradient2 = ctx.createRadialGradient(
-        x2, y2, 0, x2, y2, canvas.width * 0.5
-      );
-      // Warna: Kuning Emas Soft
-      gradient2.addColorStop(0, 'rgba(250, 204, 21, 0.08)'); 
+      const gradient2 = ctx.createRadialGradient(x2, y2, 0, x2, y2, canvas.width * 0.5);
+      gradient2.addColorStop(0, 'rgba(250, 204, 21, 0.08)');
       gradient2.addColorStop(1, 'rgba(250, 204, 21, 0)');
-
       ctx.fillStyle = gradient2;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      requestAnimationFrame(animate);
+      // ── FIX: assign ID so cleanup can cancel it ─────────────────────────
+      rafId = requestAnimationFrame(animate);
     };
-    
+
     animate();
-    
-    return () => window.removeEventListener('resize', resize);
+
+    // ── FIX: cancel both RAF loop and resize listener on unmount ───────────
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', resize);
+    };
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-100"
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
+      aria-hidden="true"
     />
   );
-}
+}

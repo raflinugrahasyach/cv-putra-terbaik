@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ProductCarousel = ({ images, interval = 3000 }) => {
+const ProductCarousel = ({ images, alts = [], interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -47,9 +47,11 @@ const ProductCarousel = ({ images, interval = 3000 }) => {
       <div className="w-full h-full relative">
         <Image
           src={images[currentIndex]}
-          alt="Product Slide"
+          alt={alts[currentIndex] || `Foto produk ${currentIndex + 1}`}
           fill
-          className="object-cover transition-all duration-700" // Durasi transisi diperhalus
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-all duration-700"
+          loading="lazy"
         />
       </div>
 

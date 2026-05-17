@@ -7,7 +7,7 @@ import projectsList from '../../data/projects.json';
 import NavbarModern from '../../components/NavbarModern'; 
 import FooterModern from '../../components/FooterModern';
 import FloatingWhatsApp from '../../components/FloatingWhatsApp';
-import { Play, ZoomIn, X, MapPin, CheckCircle2, Calendar } from 'lucide-react';
+import { Play, X, Wrench, CheckCircle2 } from 'lucide-react';
 
 export default function ProjectsClient() {
   const [selectedMedia, setSelectedMedia] = useState(null);
@@ -66,18 +66,21 @@ export default function ProjectsClient() {
 
                 {/* MEDIA DISPLAY */}
                 <div className="relative w-full">
-                  {/* Trik agar rasio gambar asli terjaga di masonry: Tidak pakai fill, pakai width/height auto */}
                   {(project.type === 'video' || (typeof project.media === 'string' && project.media.endsWith('.mp4'))) ? (
-                    <div className="relative w-full aspect-video"> 
-                       <video 
+                    <div className="relative w-full aspect-video">
+                       <video
                         className="w-full h-full object-cover"
-                        muted loop playsInline autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="none"
+                        poster={project.poster || ''}
                       >
                         <source src={project.media} type="video/mp4" />
                       </video>
-                      {/* Video Indicator */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                        <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30">
+                      {/* Video Play Indicator */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-colors">
+                        <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 group-hover:scale-110 transition-transform">
                           <Play size={20} fill="currentColor" />
                         </div>
                       </div>
@@ -86,7 +89,7 @@ export default function ProjectsClient() {
                     <Image 
                       src={project.media} 
                       alt={project.name || "Dokumentasi Proyek"}
-                      width={800} // Lebar standar, tinggi menyesuaikan
+                      width={800}
                       height={600}
                       className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
@@ -97,18 +100,10 @@ export default function ProjectsClient() {
                 {/* OVERLAY INFO (Glassmorphism Slide Up) */}
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end">
                   <div className="w-full bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    {project.name ? (
-                      <h3 className="font-bold text-sm lg:text-base mb-1 line-clamp-1">{project.name}</h3>
-                    ) : (
-                      <h3 className="font-bold text-sm mb-1">Dokumentasi Proyek</h3>
-                    )}
-                    
-                    {project.loc && (
-                      <div className="flex items-center gap-2 text-xs text-slate-200">
-                        <MapPin size={12} className="text-brand-400" />
-                        <span className="truncate">{project.loc}</span>
-                      </div>
-                    )}
+                    <div className="flex items-center gap-2 text-xs text-slate-200">
+                      <Wrench size={12} className="text-brand-400 shrink-0" />
+                      <span className="truncate font-medium">{project.system || 'Dokumentasi Proyek'}</span>
+                    </div>
                   </div>
                 </div>
 
