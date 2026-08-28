@@ -36,7 +36,7 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(self), payment=()',
           },
-          // Content Security Policy — tuned for GA4, Formspree, Google Maps
+          // Content Security Policy — tuned for GA4, Web3Forms, Google Maps
           {
             key: 'Content-Security-Policy',
             value: [
@@ -46,10 +46,10 @@ const nextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https:",
               "frame-src https://www.google.com",
-              "connect-src 'self' https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com",
+              "connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://region1.google-analytics.com",
               "worker-src 'none'",
               "base-uri 'self'",
-              "form-action 'self' https://formspree.io",
+              "form-action 'self' https://api.web3forms.com",
             ].join('; '),
           },
         ],
