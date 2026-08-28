@@ -342,7 +342,7 @@ ${formData.notes || '-'}
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 text-lg">Minta Estimasi Harga</h3>
-                  <p className="text-xs text-slate-500">Estimasi resmi akan dikirim via WhatsApp & Email</p>
+                  <p className="text-xs text-slate-500">Estimasi resmi akan dikirim ke Email Anda</p>
                 </div>
               </div>
 
