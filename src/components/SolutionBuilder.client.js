@@ -2,18 +2,19 @@
 
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Calculator, 
-  Check, 
-  Plus, 
-  Minus, 
-  ArrowRight, 
-  CheckCircle2, 
-  AlertCircle, 
-  Loader2, 
+import {
+  Calculator,
+  Check,
+  Plus,
+  Minus,
+  ArrowRight,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
   SlidersHorizontal,
   RotateCcw,
-  Sparkles
+  Sparkles,
+  ChevronDown
 } from 'lucide-react';
 
 const INITIAL_PACKAGES = [
@@ -105,7 +106,7 @@ export default function SolutionBuilder() {
         <p><strong>Nama:</strong> ${formData.name}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>WhatsApp:</strong> ${formData.whatsapp}</p>
-        <p><strong>Catatan Tambahan:</strong> ${formData.notes || '-'}</p>
+        <p><strong>Pesan / Catatan:</strong> ${formData.notes || '-'}</p>
         
         <h3 style="margin-top: 24px; color: #0f172a;">Rincian Komponen Terpilih (${selectedItems.length} Item, Total ${totalUnits} Unit):</h3>
         <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; border-color: #cbd5e1; font-size: 13px;">
@@ -144,7 +145,7 @@ ${textBreakdown}
 Total Item: ${selectedItems.length}
 Total Unit: ${totalUnits}
 
-Catatan Klien:
+Pesan / Catatan Klien:
 ${formData.notes || '-'}
     `.trim();
 
@@ -154,7 +155,7 @@ ${formData.notes || '-'}
       payload.set('access_key', accessKey);
     }
     payload.set('from_name', 'Website CV Putra Terbaik - RFQ Builder');
-    payload.set('subject', `[RFQ B2B Estimasi] ${formData.name} - ${selectedItems.length} Komponen`);
+    payload.set('subject', `[RFQ Estimasi Harga] ${formData.name} - ${selectedItems.length} Komponen`);
     payload.set('name', formData.name);
     payload.set('email', formData.email);
     payload.set('whatsapp', formData.whatsapp);
@@ -190,7 +191,7 @@ ${formData.notes || '-'}
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-brand-200 text-brand-700 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
             <Sparkles size={14} className="text-brand-500" />
             Kalkulator Spesifikasi B2B
@@ -203,162 +204,34 @@ ${formData.notes || '-'}
           </p>
         </div>
 
-        {/* Interactive 2-Column Grid */}
+        {/* E-Commerce Flow: Builder on Left (Col-7), Sticky Form on Right (Col-5) */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
-          
-          {/* LEFT COLUMN: The Lead Form (5 cols) */}
-          <div className="lg:col-span-5 bg-white/90 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-900/5 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 pb-6 mb-6 border-b border-slate-100">
-                <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold">
-                  <Calculator size={20} />
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg">Detail Permintaan</h3>
-                  <p className="text-xs text-slate-500">Estimasi resmi akan dikirim ke kontak Anda</p>
+
+          {/* ========================================================================= */}
+          {/* 1. BUILDER (COL 1-7) — Renders TOP on Mobile, LEFT on Desktop             */}
+          {/* ========================================================================= */}
+          <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-900/5">
+
+            {/* Package Selector / Header Bar */}
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-brand-50/80 via-white to-slate-50 border border-brand-100/80 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Pilih Paket:</span>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-slate-50 rounded-xl border border-brand-200/90 shadow-xs text-xs font-bold text-brand-700 cursor-pointer transition-all hover:border-brand-400 group">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                  <span>1 IN 1 OUT</span>
+                  <ChevronDown size={14} className="text-slate-400 group-hover:text-brand-600 transition-colors" />
                 </div>
               </div>
-
-              {/* Status Messages */}
-              {submitStatus === 'success' && (
-                <div className="mb-6 p-4 rounded-2xl bg-green-50 border border-green-200 text-green-800 text-sm flex items-start gap-3 animate-fade-in">
-                  <CheckCircle2 size={20} className="text-green-600 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-bold mb-0.5">Permintaan RFQ Berhasil Terkirim!</p>
-                    <p className="text-xs text-green-700 leading-relaxed">
-                      Tim teknis CV Putra Terbaik akan menyusun proposal penawaran harga dan menghubungi Anda melalui WhatsApp.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {submitStatus === 'error' && (
-                <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-sm flex items-start gap-3">
-                  <AlertCircle size={20} className="text-red-600 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-bold mb-0.5">Gagal Mengirim Permintaan</p>
-                    <p className="text-xs text-red-700">
-                      Terjadi kendala jaringan. Silakan coba lagi atau hubungi kami langsung via WhatsApp.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {validationError && (
-                <div className="mb-6 p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center gap-2">
-                  <AlertCircle size={16} className="text-amber-600 shrink-0" />
-                  <span>{validationError}</span>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="rfq-name" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    Nama Lengkap / PIC <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="rfq-name"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Contoh: Hendra Wijaya (PT Sinar Terang)"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all text-sm placeholder:text-slate-400"
-                    required
-                    minLength={3}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="rfq-email" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    Email Perusahaan / Pribadi <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="rfq-email"
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="hendra@perusahaan.co.id"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all text-sm placeholder:text-slate-400"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="rfq-whatsapp" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    Nomor WhatsApp Aktif <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="rfq-whatsapp"
-                    type="tel"
-                    name="whatsapp"
-                    value={formData.whatsapp}
-                    onChange={handleInputChange}
-                    placeholder="081234567890"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all text-sm placeholder:text-slate-400"
-                    required
-                    pattern="[0-9+\-\s]{8,20}"
-                    title="Masukkan nomor WhatsApp yang valid"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="rfq-notes" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    Kebutuhan Khusus / Lokasi Proyek
-                  </label>
-                  <textarea
-                    id="rfq-notes"
-                    name="notes"
-                    rows="3"
-                    value={formData.notes}
-                    onChange={handleInputChange}
-                    placeholder="Misal: Rencana pemasangan untuk area pergudangan di Rungkut, estimasi proyek bulan depan."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all text-sm placeholder:text-slate-400"
-                  ></textarea>
-                </div>
-
-                {/* Cart Summary Pill */}
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs font-semibold text-slate-700">
-                  <span>Komponen Terpilih:</span>
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-full bg-brand-100 text-brand-700 font-bold">
-                      {selectedItems.length} Item
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full bg-slate-200 text-slate-800 font-bold">
-                      {totalUnits} Total Unit
-                    </span>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 bg-brand-600 hover:bg-brand-700 disabled:bg-brand-400 text-white font-bold rounded-2xl shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 disabled:hover:translate-y-0 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 size={18} className="animate-spin" />
-                      <span>Memproses Permintaan...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Minta Estimasi Harga</span>
-                      <ArrowRight size={18} />
-                    </>
-                  )}
-                </button>
-              </form>
+              <span className="text-[11px] text-slate-500 font-medium italic">
+                *Komponen dapat disesuaikan
+              </span>
             </div>
-          </div>
 
-          {/* RIGHT COLUMN: The Interactive Cart & Spec Customizer (7 cols) */}
-          <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-900/5">
-            {/* Top Toolbar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 mb-5 border-b border-slate-100">
+            {/* Toolbar: Component Heading & Bulk Actions */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <SlidersHorizontal size={18} className="text-brand-600" />
-                <h3 className="font-bold text-slate-900 text-lg">Daftar Paket & Komponen</h3>
+                <h3 className="font-bold text-slate-900 text-lg">Daftar Spesifikasi & Komponen</h3>
               </div>
 
               <div className="flex items-center gap-2 text-xs">
@@ -381,8 +254,8 @@ ${formData.notes || '-'}
               </div>
             </div>
 
-            {/* Scrollable Products List */}
-            <div className="space-y-3 max-h-[580px] overflow-y-auto pr-1">
+            {/* Products Checklist (Minimalist Typographic Layout) */}
+            <div className="space-y-3">
               {packages.map((item) => {
                 const isChecked = item.checked;
 
@@ -390,14 +263,13 @@ ${formData.notes || '-'}
                   <motion.div
                     key={item.id}
                     layout
-                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-4 ${
-                      isChecked
+                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-3 sm:gap-4 ${isChecked
                         ? 'bg-white border-slate-200 shadow-sm'
                         : 'bg-slate-50/60 border-dashed border-slate-200 opacity-55'
-                    }`}
+                      }`}
                   >
                     {/* Checkbox + Title + Description */}
-                    <div 
+                    <div
                       className="flex items-start gap-3.5 flex-1 cursor-pointer select-none"
                       onClick={() => handleToggle(item.id)}
                     >
@@ -409,16 +281,15 @@ ${formData.notes || '-'}
                           e.stopPropagation();
                           handleToggle(item.id);
                         }}
-                        className={`w-6 h-6 rounded-lg flex items-center justify-center border transition-all shrink-0 mt-0.5 ${
-                          isChecked
-                            ? 'bg-brand-600 border-brand-600 text-white shadow-sm'
+                        className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all shrink-0 mt-0.5 ${isChecked
+                            ? 'bg-brand-600 border-brand-600 text-white shadow-xs'
                             : 'bg-white border-slate-300 text-transparent'
-                        }`}
+                          }`}
                       >
-                        <Check size={14} strokeWidth={3} />
+                        <Check size={13} strokeWidth={3} />
                       </button>
 
-                      <div className="space-y-0.5">
+                      <div className="space-y-0.5 min-w-0">
                         <p className={`text-sm font-bold leading-tight ${isChecked ? 'text-slate-900' : 'text-slate-500 line-through'}`}>
                           {item.name}
                         </p>
@@ -429,7 +300,7 @@ ${formData.notes || '-'}
                     </div>
 
                     {/* Quantity Controls */}
-                    <div className="flex items-center gap-2 bg-slate-100/80 p-1 rounded-xl shrink-0 border border-slate-200/60">
+                    <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-100/80 p-1 rounded-xl shrink-0 border border-slate-200/60">
                       <button
                         type="button"
                         onClick={() => handleQtyChange(item.id, -1)}
@@ -437,10 +308,10 @@ ${formData.notes || '-'}
                         className="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 disabled:opacity-30 disabled:hover:bg-white text-slate-700 flex items-center justify-center transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
                         aria-label={`Kurangi kuantitas ${item.name}`}
                       >
-                        <Minus size={14} />
+                        <Minus size={13} />
                       </button>
 
-                      <span className="w-8 text-center font-bold text-xs text-slate-900">
+                      <span className="w-7 text-center font-bold text-xs text-slate-900">
                         {item.qty}
                       </span>
 
@@ -451,12 +322,161 @@ ${formData.notes || '-'}
                         className="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 disabled:opacity-30 disabled:hover:bg-white text-slate-700 flex items-center justify-center transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
                         aria-label={`Tambah kuantitas ${item.name}`}
                       >
-                        <Plus size={14} />
+                        <Plus size={13} />
                       </button>
                     </div>
                   </motion.div>
                 );
               })}
+            </div>
+          </div>
+
+          {/* ========================================================================= */}
+          {/* 2. CHECKOUT FORM (COL 8-12) — Renders BOTTOM on Mobile, RIGHT on Desktop   */}
+          {/* ========================================================================= */}
+          <div className="lg:col-span-5 bg-white/90 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-900/5 lg:sticky lg:top-24">
+            <div>
+              <div className="flex items-center gap-3 pb-5 mb-5 border-b border-slate-100">
+                <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold">
+                  <Calculator size={20} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-lg">Minta Estimasi Harga</h3>
+                  <p className="text-xs text-slate-500">Estimasi resmi akan dikirim via WhatsApp & Email</p>
+                </div>
+              </div>
+
+              {/* Live Cart Summary Pill */}
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 flex items-center justify-between text-xs font-semibold text-slate-700">
+                <span>Rangkuman Pilihan:</span>
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-1 rounded-full bg-brand-100 text-brand-700 font-bold">
+                    {selectedItems.length} Item
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-slate-200 text-slate-800 font-bold">
+                    {totalUnits} Total Unit
+                  </span>
+                </div>
+              </div>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 rounded-2xl bg-green-50 border border-green-200 text-green-800 text-sm flex items-start gap-3 animate-fade-in">
+                  <CheckCircle2 size={20} className="text-green-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold mb-0.5">Permintaan RFQ Berhasil Terkirim!</p>
+                    <p className="text-xs text-green-700 leading-relaxed">
+                      Tim CV Putra Terbaik telah menerima rincian spesifikasi Anda dan akan segera menghubungi Anda.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-sm flex items-start gap-3">
+                  <AlertCircle size={20} className="text-red-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold mb-0.5">Gagal Mengirim Permintaan</p>
+                    <p className="text-xs text-red-700">
+                      Terjadi kendala teknis. Silakan coba lagi atau hubungi kami langsung melalui WhatsApp.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {validationError && (
+                <div className="mb-6 p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center gap-2">
+                  <AlertCircle size={16} className="text-amber-600 shrink-0" />
+                  <span>{validationError}</span>
+                </div>
+              )}
+
+              {/* Standardized Form Fields */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="rfq-name" className="block text-sm font-bold text-slate-700 mb-1.5">
+                    Nama Lengkap <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="rfq-name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Contoh: Budi Santoso"
+                    className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400 text-sm"
+                    required
+                    minLength={3}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="rfq-email" className="block text-sm font-bold text-slate-700 mb-1.5">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="rfq-email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="emailanda@gmail.com"
+                    className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400 text-sm"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="rfq-whatsapp" className="block text-sm font-bold text-slate-700 mb-1.5">
+                    Nomor WhatsApp <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="rfq-whatsapp"
+                    type="tel"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleInputChange}
+                    placeholder="Contoh: 08123456789"
+                    className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400 text-sm"
+                    required
+                    pattern="[0-9+\-\s]{8,20}"
+                    title="Masukkan nomor WhatsApp yang valid"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="rfq-notes" className="block text-sm font-bold text-slate-700 mb-1.5">
+                    Pesan / Catatan Tambahan
+                  </label>
+                  <textarea
+                    id="rfq-notes"
+                    name="notes"
+                    rows="3"
+                    value={formData.notes}
+                    onChange={handleInputChange}
+                    placeholder="Tulis kebutuhan atau catatan lokasi di sini..."
+                    className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400 text-sm"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-brand-600 hover:bg-brand-700 disabled:bg-brand-400 text-white font-bold rounded-xl shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-1 disabled:hover:translate-y-0 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      <span>Memproses Estimasi...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Minta Estimasi Harga</span>
+                      <ArrowRight size={20} />
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
 
