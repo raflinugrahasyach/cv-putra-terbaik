@@ -12,6 +12,7 @@ import FooterModern from '../components/FooterModern';
 import FadeIn from '../components/FadeIn';
 import clientsData from '../data/clients.json';
 import Testimonials from '../components/Testimonials';
+import ContactForm from '../components/ContactForm.client';
 
 export const metadata = {
   title: 'CV Putra Terbaik — Barrier Gate, Sistem Parkir Manless & Access Control Surabaya',
@@ -84,8 +85,8 @@ export default function Homepage() {
           </h1>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">Mitra terpercaya penyedia sistem parkir otomatis, barrier gate, dan akses kontrol modern untuk bisnis Anda.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Link href="#produk" className="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-full font-bold shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-1 flex items-center justify-center gap-2">Lihat Produk <ArrowRight size={20} /></Link>
-            <Link href="#contact" className="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-full font-bold transition-all hover:-translate-y-1 flex items-center justify-center gap-2">Hubungi Sales</Link>
+            <Link href="/#produk" className="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-full font-bold shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-1 flex items-center justify-center gap-2">Lihat Produk <ArrowRight size={20} /></Link>
+            <Link href="/#contact" className="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-full font-bold transition-all hover:-translate-y-1 flex items-center justify-center gap-2">Hubungi Sales</Link>
           </div>
         </FadeIn>
       </section>
@@ -185,21 +186,7 @@ export default function Homepage() {
           </div>
           <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl border border-slate-100 h-fit">
             <h3 className="text-2xl font-bold mb-6 text-slate-900">Kirim Pesan</h3>
-            <form action="https://formspree.io/f/xdkalpgo" method="POST" className="space-y-5">
-              <div>
-                <label htmlFor="contact-name" className="block text-sm font-bold text-slate-700 mb-2">Nama Lengkap</label>
-                <input id="contact-name" type="text" name="name" placeholder="Contoh: Budi Santoso" className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all placeholder:text-slate-400" required minLength={3} />
-              </div>
-              <div>
-                <label htmlFor="contact-email" className="block text-sm font-bold text-slate-700 mb-2">Email</label>
-                <input id="contact-email" type="email" name="email" placeholder="emailanda@gmail.com" className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all placeholder:text-slate-400" required />
-              </div>
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-bold text-slate-700 mb-2">Pesan</label>
-                <textarea id="contact-message" name="message" rows="4" placeholder="Tulis kebutuhan Anda di sini..." className="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 focus:ring-2 focus:ring-brand-500 outline-none transition-all placeholder:text-slate-400" required minLength={10}></textarea>
-              </div>
-              <button type="submit" className="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">Kirim Pesan Sekarang <ArrowRight size={20} /></button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>

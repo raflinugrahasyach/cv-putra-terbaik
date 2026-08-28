@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { MapPin, Phone, Mail, ArrowRight, Linkedin, Instagram, ShoppingBag } from 'lucide-react';
@@ -121,15 +120,20 @@ const FooterModern = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-slate-800 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm">
-          &copy; {currentYear} CV Putra Terbaik. Melayani 24 Jam.
-        </p>
-        <p className="text-sm flex gap-6">
-          <Link href="/surabaya" className="hover:text-white transition-colors">Cabang Surabaya</Link>
-          <Link href="/gresik" className="hover:text-white transition-colors">Cabang Gresik</Link>
-          <Link href="/sidoarjo" className="hover:text-white transition-colors">Cabang Sidoarjo</Link>
-        </p>
+      <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-slate-800 flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="text-sm">
+            &copy; {currentYear} CV Putra Terbaik. Melayani 24 Jam.
+          </p>
+          <p className="text-sm text-slate-400 max-w-md text-left md:text-right leading-relaxed">
+            Melayani instalasi sistem parkir, barrier gate, dan keamanan terintegrasi untuk wilayah Surabaya, Jawa Timur, hingga seluruh Indonesia.
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-x-6 gap-y-1 pt-3 border-t border-slate-900">
+          <span className="text-xs text-slate-600">NIB: 0220009171605</span>
+          <span className="text-xs text-slate-600">NPWP: 93.975.348.9-604.000</span>
+          <span className="text-xs text-slate-600">SK KEMENKUMHAM: AHU-0000211-AH.01.14 Tahun 2020</span>
+        </div>
       </div>
     </footer>
   );
