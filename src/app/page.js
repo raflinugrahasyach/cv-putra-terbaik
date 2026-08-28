@@ -13,6 +13,7 @@ import FadeIn from '../components/FadeIn';
 import clientsData from '../data/clients.json';
 import Testimonials from '../components/Testimonials';
 import ContactForm from '../components/ContactForm.client';
+import SolutionBuilder from '../components/SolutionBuilder.client';
 
 export const metadata = {
   title: 'CV Putra Terbaik — Barrier Gate, Sistem Parkir Manless & Access Control Surabaya',
@@ -113,6 +114,9 @@ export default function Homepage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* B2B CUSTOM RFQ / SOLUTION BUILDER */}
+      <SolutionBuilder />
 
       {/* PRODUK — Client Island */}
       <ProductSearch />
