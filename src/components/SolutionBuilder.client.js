@@ -263,7 +263,7 @@ ${formData.notes || '-'}
                   <motion.div
                     key={item.id}
                     layout
-                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-3 sm:gap-4 ${isChecked
+                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-start sm:items-center justify-between gap-3 sm:gap-4 ${isChecked
                         ? 'bg-white border-slate-200 shadow-sm'
                         : 'bg-slate-50/60 border-dashed border-slate-200 opacity-55'
                       }`}
@@ -289,11 +289,11 @@ ${formData.notes || '-'}
                         <Check size={13} strokeWidth={3} />
                       </button>
 
-                      <div className="space-y-0.5 min-w-0">
-                        <p className={`text-sm font-bold leading-tight ${isChecked ? 'text-slate-900' : 'text-slate-500 line-through'}`}>
+                      <div className="space-y-1 min-w-0 flex-1">
+                        <p className={`text-sm font-bold leading-snug whitespace-normal break-words ${isChecked ? 'text-slate-900' : 'text-slate-500 line-through'}`}>
                           {item.name}
                         </p>
-                        <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                        <p className="text-xs text-slate-500 leading-relaxed whitespace-normal break-words">
                           {item.desc}
                         </p>
                       </div>
