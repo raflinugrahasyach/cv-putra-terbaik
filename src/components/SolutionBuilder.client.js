@@ -1,88 +1,193 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import {
-  Calculator,
-  Check,
-  Plus,
-  Minus,
-  ArrowRight,
-  CheckCircle2,
-  AlertCircle,
-  Loader2,
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Calculator, 
+  Check, 
+  Plus, 
+  Minus, 
+  ArrowRight, 
+  CheckCircle2, 
+  AlertCircle, 
+  Loader2, 
   SlidersHorizontal,
   RotateCcw,
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  Layers
 } from 'lucide-react';
 
-const INITIAL_PACKAGES = [
-  { id: 1, name: "Barrier Gate, Boom 4m speed 3s", desc: "1 IN 1 OUT. Include remote 2 pcs", qty: 2, checked: true },
-  { id: 2, name: "Paket Box Dispenser Ticket", desc: "Touchless Button, IP Printer Thermal, Microcontroller, Vehicle Loop Detector, Switch Hub, Stop Kontak", qty: 1, checked: true },
-  { id: 3, name: "Microcontroller Pintu Keluar", desc: "Modul controller untuk gate keluar", qty: 1, checked: true },
-  { id: 4, name: "Vehicle Loop Detector", desc: "Sensor tanam untuk menutup palang otomatis", qty: 2, checked: true },
-  { id: 5, name: "IP Camera Hikvision 2 MP", desc: "Termasuk tiang kamera", qty: 2, checked: true },
-  { id: 6, name: "PC Admin / Server (1 Set)", desc: "Core i5, RAM 4GB, SSD 256GB, HDD 512GB, Monitor LG 19 inch", qty: 1, checked: true },
-  { id: 7, name: "Printer Cetak Struk", desc: "Thermal printer kasir", qty: 1, checked: true },
-  { id: 8, name: "Barcode Scanner", desc: "Scanner untuk tiket keluar", qty: 1, checked: true },
-  { id: 9, name: "Software Parkir Modul Ticket", desc: "Fitur laporan, pendapatan, foto IP Cam, dan pengaturan tarif", qty: 1, checked: true },
-  { id: 10, name: "Pos Parkir Single", desc: "Ukuran P.120 × L.85 × T.200cm", qty: 1, checked: true },
-];
+const PACKAGES_DATA = {
+  ticket: {
+    id: 'ticket',
+    name: '1 IN 1 OUT Sistem Tiket',
+    shortName: 'Sistem Tiket',
+    description: 'Solusi pos parkir otomatis manless dengan dispenser tiket barcode & kasir.',
+    items: [
+      { id: 't1', name: "Barrier Gate, Boom 4m speed 3s", desc: "1 IN 1 OUT. Include remote 2 pcs", qty: 2, checked: true },
+      { id: 't2', name: "Paket Box Dispenser Ticket", desc: "Touchless Button, IP Printer Thermal, Microcontroller, Switch Hub, Stop Kontak", qty: 1, checked: true },
+      { id: 't3', name: "Microcontroller Pintu Keluar", desc: "Modul controller untuk gate keluar", qty: 1, checked: true },
+      { id: 't4', name: "Vehicle Loop Detector", desc: "Sensor tanam untuk menutup palang otomatis", qty: 2, checked: true },
+      { id: 't5', name: "IP Camera Hikvision 2 MP", desc: "Termasuk tiang kamera", qty: 2, checked: true },
+      { id: 't6', name: "PC Admin / Server (1 Set)", desc: "Core i5, RAM 4GB, SSD 256GB, HDD 512GB, Monitor LG 19 inch", qty: 1, checked: true },
+      { id: 't7', name: "Printer Cetak Struk", desc: "Thermal printer kasir", qty: 1, checked: true },
+      { id: 't8', name: "Barcode Scanner", desc: "Scanner untuk tiket keluar", qty: 1, checked: true },
+      { id: 't9', name: "Software Parkir Modul Ticket", desc: "Fitur laporan, pendapatan, foto IP Cam, dan pengaturan tarif", qty: 1, checked: true },
+      { id: 't10', name: "Pos Parkir Single", desc: "Ukuran P.120 × L.85 × T.200cm", qty: 1, checked: true },
+    ]
+  },
+  rfid: {
+    id: 'rfid',
+    name: '1 IN 1 OUT Sistem RFID',
+    shortName: 'Sistem RFID',
+    description: 'Sistem akses gerbang otomatis kartu RFID untuk perumahan, instansi & apartemen.',
+    items: [
+      { id: 'r1', name: "Barrier Gate, Boom 4m speed 3s", desc: "Include remote 2 pcs", qty: 2, checked: true },
+      { id: 'r2', name: "Box Custom", desc: "Include Switch Hub & Stop Kontak", qty: 2, checked: true },
+      { id: 'r3', name: "RFID Reader", desc: "Reader RFID untuk gate masuk & keluar", qty: 2, checked: true },
+      { id: 'r4', name: "Microcontroller", desc: "Modul controller untuk gate masuk & keluar", qty: 2, checked: true },
+      { id: 'r5', name: "Vehicle Loop Detector", desc: "Untuk menutup palang secara otomatis", qty: 2, checked: true },
+      { id: 'r6', name: "IP Camera Hikvision 2 MP + Tiang Camera", desc: "Termasuk tiang kamera", qty: 2, checked: true },
+      { id: 'r7', name: "PC Admin / Server", desc: "Core i5, RAM 4GB, SSD 256GB (sistem), HDD 512GB (data), Keyboard, Mouse, Monitor LG 19\"", qty: 1, checked: true },
+      { id: 'r8', name: "Reader Desk", desc: "Untuk registrasi kartu", qty: 1, checked: true },
+      { id: 'r9', name: "Access Card / Kartu RFID 125 KHz", desc: "Kartu akses RFID 125 KHz", qty: 100, checked: true },
+      { id: 'r10', name: "Software custom fitur RFID", desc: "Unlimited User, Tambah/Hapus/Edit/Blokir Kartu, Pengaturan masa berlaku, Laporan Masuk & Keluar, Integrasi Foto IP Cam", qty: 1, checked: true },
+    ]
+  }
+};
 
 export default function SolutionBuilder() {
-  const [packages, setPackages] = useState(INITIAL_PACKAGES);
+  const [activePackageKey, setActivePackageKey] = useState('ticket');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Store custom package items in state
+  const [packageItemsState, setPackageItemsState] = useState({
+    ticket: JSON.parse(JSON.stringify(PACKAGES_DATA.ticket.items)),
+    rfid: JSON.parse(JSON.stringify(PACKAGES_DATA.rfid.items)),
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     whatsapp: '',
     notes: '',
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
   const [validationError, setValidationError] = useState('');
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const currentPackageConfig = PACKAGES_DATA[activePackageKey];
+  const currentItems = packageItemsState[activePackageKey];
+
   // Toggle item selection
   const handleToggle = (id) => {
-    setPackages((prev) =>
-      prev.map((item) =>
+    setPackageItemsState((prev) => ({
+      ...prev,
+      [activePackageKey]: prev[activePackageKey].map((item) =>
         item.id === id ? { ...item, checked: !item.checked } : item
-      )
-    );
+      ),
+    }));
   };
 
-  // Adjust quantity with a minimum of 1
+  // Adjust quantity with minimum of 1
   const handleQtyChange = (id, delta) => {
-    setPackages((prev) =>
-      prev.map((item) => {
+    setPackageItemsState((prev) => ({
+      ...prev,
+      [activePackageKey]: prev[activePackageKey].map((item) => {
         if (item.id === id) {
-          const newQty = Math.max(1, item.qty + delta);
+          const currentVal = parseInt(item.qty, 10) || 1;
+          const newQty = Math.max(1, currentVal + delta);
           return { ...item, qty: newQty };
         }
         return item;
-      })
-    );
+      }),
+    }));
+  };
+
+  // Direct manual quantity typing
+  const handleDirectQtyChange = (id, val) => {
+    if (val === '') {
+      setPackageItemsState((prev) => ({
+        ...prev,
+        [activePackageKey]: prev[activePackageKey].map((item) =>
+          item.id === id ? { ...item, qty: '' } : item
+        ),
+      }));
+      return;
+    }
+
+    const parsed = parseInt(val, 10);
+    if (!isNaN(parsed)) {
+      const sanitized = Math.max(1, Math.min(99999, parsed));
+      setPackageItemsState((prev) => ({
+        ...prev,
+        [activePackageKey]: prev[activePackageKey].map((item) =>
+          item.id === id ? { ...item, qty: sanitized } : item
+        ),
+      }));
+    }
+  };
+
+  // Fallback to 1 if left empty on blur
+  const handleQtyBlur = (id) => {
+    setPackageItemsState((prev) => ({
+      ...prev,
+      [activePackageKey]: prev[activePackageKey].map((item) =>
+        item.id === id
+          ? { ...item, qty: typeof item.qty === 'number' && item.qty >= 1 ? item.qty : 1 }
+          : item
+      ),
+    }));
   };
 
   // Bulk actions
   const selectAll = () => {
-    setPackages((prev) => prev.map((item) => ({ ...item, checked: true })));
+    setPackageItemsState((prev) => ({
+      ...prev,
+      [activePackageKey]: prev[activePackageKey].map((item) => ({ ...item, checked: true })),
+    }));
   };
 
   const resetDefaults = () => {
-    setPackages(INITIAL_PACKAGES);
+    setPackageItemsState((prev) => ({
+      ...prev,
+      [activePackageKey]: JSON.parse(JSON.stringify(PACKAGES_DATA[activePackageKey].items)),
+    }));
   };
 
   // Calculations
-  const selectedItems = useMemo(() => packages.filter((p) => p.checked), [packages]);
+  const selectedItems = useMemo(
+    () => currentItems.filter((p) => p.checked),
+    [currentItems]
+  );
+
   const totalUnits = useMemo(
-    () => selectedItems.reduce((acc, curr) => acc + curr.qty, 0),
+    () => selectedItems.reduce((acc, curr) => acc + (parseInt(curr.qty, 10) || 0), 0),
     [selectedItems]
   );
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectPackage = (key) => {
+    setActivePackageKey(key);
+    setIsDropdownOpen(false);
   };
 
   const handleSubmit = async (e) => {
@@ -103,6 +208,7 @@ export default function SolutionBuilder() {
         <h2 style="color: #0284c7; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">
           Permintaan Estimasi Harga (Custom RFQ)
         </h2>
+        <p><strong>Paket Dipilih:</strong> <span style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-weight: bold;">${currentPackageConfig.name}</span></p>
         <p><strong>Nama:</strong> ${formData.name}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>WhatsApp:</strong> ${formData.whatsapp}</p>
@@ -138,6 +244,8 @@ export default function SolutionBuilder() {
       .join('\n');
 
     const fullMessage = `
+PAKET: ${currentPackageConfig.name}
+----------------------------------------
 RINCIAN SPESIFIKASI RFQ:
 ----------------------------------------
 ${textBreakdown}
@@ -155,10 +263,11 @@ ${formData.notes || '-'}
       payload.set('access_key', accessKey);
     }
     payload.set('from_name', 'Website CV Putra Terbaik - RFQ Builder');
-    payload.set('subject', `[RFQ Estimasi Harga] ${formData.name} - ${selectedItems.length} Komponen`);
+    payload.set('subject', `[RFQ Estimasi] ${formData.name} - ${currentPackageConfig.name}`);
     payload.set('name', formData.name);
     payload.set('email', formData.email);
     payload.set('whatsapp', formData.whatsapp);
+    payload.set('package_name', currentPackageConfig.name);
     payload.set('message', fullMessage);
     payload.set('html_table', htmlTable);
 
@@ -200,28 +309,75 @@ ${formData.notes || '-'}
             Rancang Sistem Keamanan Anda
           </h2>
           <p className="text-slate-600 text-base lg:text-lg leading-relaxed">
-            Pilih spesifikasi yang Anda butuhkan, sesuaikan kuantitas, dan dapatkan estimasi biaya secara instan langsung dari tim teknis kami.
+            Pilih paket sistem yang Anda butuhkan, sesuaikan kuantitas komponen, dan dapatkan estimasi biaya resmi langsung ke email Anda.
           </p>
         </div>
 
         {/* E-Commerce Flow: Builder on Left (Col-7), Sticky Form on Right (Col-5) */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
-
+          
           {/* ========================================================================= */}
           {/* 1. BUILDER (COL 1-7) — Renders TOP on Mobile, LEFT on Desktop             */}
           {/* ========================================================================= */}
           <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-900/5">
-
-            {/* Package Selector / Header Bar */}
+            
+            {/* Package Selector / Header Bar with Unified Dropdown */}
             <div className="p-4 rounded-2xl bg-gradient-to-r from-brand-50/80 via-white to-slate-50 border border-brand-100/80 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Pilih Paket:</span>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-slate-50 rounded-xl border border-brand-200/90 shadow-xs text-xs font-bold text-brand-700 cursor-pointer transition-all hover:border-brand-400 group">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                  <span>1 IN 1 OUT</span>
-                  <ChevronDown size={14} className="text-slate-400 group-hover:text-brand-600 transition-colors" />
+                
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-slate-50 rounded-xl border border-brand-200/90 shadow-xs text-xs font-bold text-brand-700 cursor-pointer transition-all hover:border-brand-400 group"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span>{currentPackageConfig.name}</span>
+                    <ChevronDown size={14} className={`text-slate-400 group-hover:text-brand-600 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-brand-600' : ''}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {isDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl z-40 p-1.5 overflow-hidden"
+                      >
+                        {Object.values(PACKAGES_DATA).map((pkg) => {
+                          const isActive = activePackageKey === pkg.id;
+                          return (
+                            <button
+                              key={pkg.id}
+                              type="button"
+                              onClick={() => handleSelectPackage(pkg.id)}
+                              className={`w-full text-left p-3 rounded-xl text-xs transition-all flex items-start justify-between gap-2 cursor-pointer ${
+                                isActive
+                                  ? 'bg-brand-50/90 text-brand-800 font-bold border border-brand-200/80 shadow-xs'
+                                  : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+                              }`}
+                            >
+                              <div className="space-y-0.5">
+                                <div className="flex items-center gap-1.5">
+                                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-green-500' : 'bg-slate-300'}`} />
+                                  <span className="font-bold">{pkg.name}</span>
+                                </div>
+                                <p className="text-[11px] text-slate-500 font-normal leading-relaxed pl-3">
+                                  {pkg.description}
+                                </p>
+                              </div>
+                              {isActive && <Check size={16} className="text-brand-600 shrink-0 mt-0.5" />}
+                            </button>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
+
               <span className="text-[11px] text-slate-500 font-medium italic">
                 *Komponen dapat disesuaikan
               </span>
@@ -231,7 +387,9 @@ ${formData.notes || '-'}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <SlidersHorizontal size={18} className="text-brand-600" />
-                <h3 className="font-bold text-slate-900 text-lg">Daftar Spesifikasi & Komponen</h3>
+                <h3 className="font-bold text-slate-900 text-lg">
+                  Komponen {currentPackageConfig.shortName}
+                </h3>
               </div>
 
               <div className="flex items-center gap-2 text-xs">
@@ -256,20 +414,21 @@ ${formData.notes || '-'}
 
             {/* Products Checklist (Minimalist Typographic Layout) */}
             <div className="space-y-3">
-              {packages.map((item) => {
+              {currentItems.map((item) => {
                 const isChecked = item.checked;
 
                 return (
                   <motion.div
                     key={item.id}
                     layout
-                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-start sm:items-center justify-between gap-3 sm:gap-4 ${isChecked
-                      ? 'bg-white border-slate-200 shadow-sm'
-                      : 'bg-slate-50/60 border-dashed border-slate-200 opacity-55'
-                      }`}
+                    className={`p-4 rounded-2xl border transition-all duration-200 flex items-start sm:items-center justify-between gap-3 sm:gap-4 ${
+                      isChecked
+                        ? 'bg-white border-slate-200 shadow-sm'
+                        : 'bg-slate-50/60 border-dashed border-slate-200 opacity-55'
+                    }`}
                   >
                     {/* Checkbox + Title + Description */}
-                    <div
+                    <div 
                       className="flex items-start gap-3.5 flex-1 cursor-pointer select-none"
                       onClick={() => handleToggle(item.id)}
                     >
@@ -281,10 +440,11 @@ ${formData.notes || '-'}
                           e.stopPropagation();
                           handleToggle(item.id);
                         }}
-                        className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all shrink-0 mt-0.5 ${isChecked
-                          ? 'bg-brand-600 border-brand-600 text-white shadow-xs'
-                          : 'bg-white border-slate-300 text-transparent'
-                          }`}
+                        className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all shrink-0 mt-0.5 ${
+                          isChecked
+                            ? 'bg-brand-600 border-brand-600 text-white shadow-xs'
+                            : 'bg-white border-slate-300 text-transparent'
+                        }`}
                       >
                         <Check size={13} strokeWidth={3} />
                       </button>
@@ -300,20 +460,28 @@ ${formData.notes || '-'}
                     </div>
 
                     {/* Quantity Controls */}
-                    <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-100/80 p-1 rounded-xl shrink-0 border border-slate-200/60">
+                    <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-100/80 p-1 rounded-xl shrink-0 border border-slate-200/60">
                       <button
                         type="button"
                         onClick={() => handleQtyChange(item.id, -1)}
-                        disabled={!isChecked || item.qty <= 1}
+                        disabled={!isChecked || (parseInt(item.qty, 10) || 1) <= 1}
                         className="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 disabled:opacity-30 disabled:hover:bg-white text-slate-700 flex items-center justify-center transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
                         aria-label={`Kurangi kuantitas ${item.name}`}
                       >
                         <Minus size={13} />
                       </button>
 
-                      <span className="w-7 text-center font-bold text-xs text-slate-900">
-                        {item.qty}
-                      </span>
+                      <input
+                        type="number"
+                        min="1"
+                        max="99999"
+                        value={item.qty}
+                        disabled={!isChecked}
+                        onChange={(e) => handleDirectQtyChange(item.id, e.target.value)}
+                        onBlur={() => handleQtyBlur(item.id)}
+                        className="w-10 sm:w-11 text-center font-bold text-xs text-slate-900 bg-transparent border-0 outline-none focus:bg-white focus:ring-1 focus:ring-brand-500 rounded p-0.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none disabled:opacity-40"
+                        aria-label={`Kuantitas ${item.name}`}
+                      />
 
                       <button
                         type="button"
@@ -347,15 +515,23 @@ ${formData.notes || '-'}
               </div>
 
               {/* Live Cart Summary Pill */}
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 flex items-center justify-between text-xs font-semibold text-slate-700">
-                <span>Rangkuman Pilihan:</span>
-                <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-full bg-brand-100 text-brand-700 font-bold">
-                    {selectedItems.length} Item
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-6 space-y-2">
+                <div className="flex items-center justify-between text-xs text-slate-500">
+                  <span>Paket Dasar:</span>
+                  <span className="font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-100">
+                    {currentPackageConfig.name}
                   </span>
-                  <span className="px-2.5 py-1 rounded-full bg-slate-200 text-slate-800 font-bold">
-                    {totalUnits} Total Unit
-                  </span>
+                </div>
+                <div className="flex items-center justify-between text-xs font-semibold text-slate-700 pt-1 border-t border-slate-200/60">
+                  <span>Rangkuman Komponen:</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="px-2 py-0.5 rounded-md bg-brand-100 text-brand-700 font-bold text-[11px]">
+                      {selectedItems.length} Item
+                    </span>
+                    <span className="px-2 py-0.5 rounded-md bg-slate-200 text-slate-800 font-bold text-[11px]">
+                      {totalUnits} Total Unit
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -366,7 +542,7 @@ ${formData.notes || '-'}
                   <div>
                     <p className="font-bold mb-0.5">Permintaan RFQ Berhasil Terkirim!</p>
                     <p className="text-xs text-green-700 leading-relaxed">
-                      Tim CV Putra Terbaik telah menerima rincian spesifikasi Anda dan akan segera menghubungi Anda.
+                      Tim CV Putra Terbaik telah menerima rincian spesifikasi untuk {currentPackageConfig.name} dan akan segera mengirimkan penawaran resmi.
                     </p>
                   </div>
                 </div>
