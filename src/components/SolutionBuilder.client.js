@@ -19,7 +19,7 @@ import {
 
 const INITIAL_PACKAGES = [
   { id: 1, name: "Barrier Gate, Boom 4m speed 3s", desc: "1 IN 1 OUT. Include remote 2 pcs", qty: 2, checked: true },
-  { id: 2, name: "Paket Box Dispenser Ticket", desc: "Touchless Button, IP Printer Thermal, Microcontroller, Switch Hub, Stop Kontak", qty: 1, checked: true },
+  { id: 2, name: "Paket Box Dispenser Ticket", desc: "Touchless Button, IP Printer Thermal, Microcontroller, Vehicle Loop Detector, Switch Hub, Stop Kontak", qty: 1, checked: true },
   { id: 3, name: "Microcontroller Pintu Keluar", desc: "Modul controller untuk gate keluar", qty: 1, checked: true },
   { id: 4, name: "Vehicle Loop Detector", desc: "Sensor tanam untuk menutup palang otomatis", qty: 2, checked: true },
   { id: 5, name: "IP Camera Hikvision 2 MP", desc: "Termasuk tiang kamera", qty: 2, checked: true },
@@ -264,8 +264,8 @@ ${formData.notes || '-'}
                     key={item.id}
                     layout
                     className={`p-4 rounded-2xl border transition-all duration-200 flex items-start sm:items-center justify-between gap-3 sm:gap-4 ${isChecked
-                        ? 'bg-white border-slate-200 shadow-sm'
-                        : 'bg-slate-50/60 border-dashed border-slate-200 opacity-55'
+                      ? 'bg-white border-slate-200 shadow-sm'
+                      : 'bg-slate-50/60 border-dashed border-slate-200 opacity-55'
                       }`}
                   >
                     {/* Checkbox + Title + Description */}
@@ -282,8 +282,8 @@ ${formData.notes || '-'}
                           handleToggle(item.id);
                         }}
                         className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all shrink-0 mt-0.5 ${isChecked
-                            ? 'bg-brand-600 border-brand-600 text-white shadow-xs'
-                            : 'bg-white border-slate-300 text-transparent'
+                          ? 'bg-brand-600 border-brand-600 text-white shadow-xs'
+                          : 'bg-white border-slate-300 text-transparent'
                           }`}
                       >
                         <Check size={13} strokeWidth={3} />
