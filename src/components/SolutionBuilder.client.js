@@ -14,8 +14,7 @@ import {
   SlidersHorizontal,
   RotateCcw,
   Sparkles,
-  ChevronDown,
-  Layers
+  ChevronDown
 } from 'lucide-react';
 
 const PACKAGES_DATA = {
@@ -41,7 +40,7 @@ const PACKAGES_DATA = {
     id: 'rfid',
     name: '1 IN 1 OUT Sistem RFID',
     shortName: 'Sistem RFID',
-    description: 'Sistem akses gerbang otomatis kartu RFID untuk perumahan, instansi & apartemen.',
+    description: 'Sistem akses gerbang otomatis kartu RFID terintegrasi software server & laporan.',
     items: [
       { id: 'r1', name: "Barrier Gate, Boom 4m speed 3s", desc: "Include remote 2 pcs", qty: 2, checked: true },
       { id: 'r2', name: "Box Custom", desc: "Include Switch Hub & Stop Kontak", qty: 2, checked: true },
@@ -53,6 +52,35 @@ const PACKAGES_DATA = {
       { id: 'r8', name: "Reader Desk", desc: "Untuk registrasi kartu", qty: 1, checked: true },
       { id: 'r9', name: "Access Card / Kartu RFID 125 KHz", desc: "Kartu akses RFID 125 KHz", qty: 100, checked: true },
       { id: 'r10', name: "Software custom fitur RFID", desc: "Unlimited User, Tambah/Hapus/Edit/Blokir Kartu, Pengaturan masa berlaku, Laporan Masuk & Keluar, Integrasi Foto IP Cam", qty: 1, checked: true },
+    ]
+  },
+  access_control: {
+    id: 'access_control',
+    name: '1 IN 1 OUT Access Control',
+    shortName: 'Access Control',
+    description: 'Sistem akses palang mandiri kartu RFID stand alone tanpa PC & software server.',
+    items: [
+      { id: 'ac1', name: "Barrier Gate, Boom 4m speed 3s", desc: "Include remote 2 pcs", qty: 2, checked: true },
+      { id: 'ac2', name: "Tiang Access Control", desc: "Tiang penyangga mesin access control", qty: 2, checked: true },
+      { id: 'ac3', name: "Access Control stand alone", desc: "Mesin reader access control stand alone", qty: 2, checked: true },
+      { id: 'ac4', name: "Vehicle Loop Detector", desc: "Untuk menutup palang secara otomatis", qty: 2, checked: true },
+      { id: 'ac5', name: "Access Card / Kartu RFID 125 KHz", desc: "Kartu akses RFID 125 KHz", qty: 100, checked: true },
+    ]
+  },
+  pay_in: {
+    id: 'pay_in',
+    name: 'Bayar di Pintu Masuk',
+    shortName: 'Bayar di Pintu Masuk',
+    description: 'Sistem 1 gate palang parkir dengan transaksi pembayaran langsung di pos masuk/kasir.',
+    items: [
+      { id: 'pi1', name: "Barrier Gate, Boom 4m speed 3s", desc: "1 IN 1 OUT. Include remote 2 pcs", qty: 1, checked: true },
+      { id: 'pi2', name: "Microcontroller", desc: "Modul controller gate", qty: 1, checked: true },
+      { id: 'pi3', name: "Vehicle Loop Detector", desc: "Untuk menutup palang secara otomatis", qty: 1, checked: true },
+      { id: 'pi4', name: "IP Camera Hikvision 2 MP + Tiang Camera", desc: "Termasuk tiang kamera", qty: 1, checked: true },
+      { id: 'pi5', name: "PC Admin / Server", desc: "Core i5, RAM 4GB, SSD 256GB (sistem), HDD 512GB (data), Keyboard, Mouse, Monitor LG 19\"", qty: 1, checked: true },
+      { id: 'pi6', name: "Printer untuk cetak struk", desc: "Thermal printer kasir cetak struk", qty: 1, checked: true },
+      { id: 'pi7', name: "Software Parkir modul ticket", desc: "Fitur laporan kendaraan masuk (jam, hari, bulan, tahun), laporan pendapatan, foto IP Camera, pengaturan tarif", qty: 1, checked: true },
+      { id: 'pi8', name: "Pos Parkir Single, uk. P.120×L.85×T.200cm", desc: "Pos parkir single ukuran P.120 × L.85 × T.200cm", qty: 1, checked: true },
     ]
   }
 };
@@ -66,6 +94,8 @@ export default function SolutionBuilder() {
   const [packageItemsState, setPackageItemsState] = useState({
     ticket: JSON.parse(JSON.stringify(PACKAGES_DATA.ticket.items)),
     rfid: JSON.parse(JSON.stringify(PACKAGES_DATA.rfid.items)),
+    access_control: JSON.parse(JSON.stringify(PACKAGES_DATA.access_control.items)),
+    pay_in: JSON.parse(JSON.stringify(PACKAGES_DATA.pay_in.items)),
   });
 
   const [formData, setFormData] = useState({
@@ -344,7 +374,7 @@ ${formData.notes || '-'}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -6, scale: 0.98 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute left-0 top-full mt-2 w-72 sm:w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl z-40 p-1.5 overflow-hidden"
+                        className="absolute left-0 top-full mt-2 w-72 sm:w-84 max-h-80 overflow-y-auto bg-white rounded-2xl border border-slate-200 shadow-2xl z-40 p-1.5"
                       >
                         {Object.values(PACKAGES_DATA).map((pkg) => {
                           const isActive = activePackageKey === pkg.id;
@@ -459,7 +489,7 @@ ${formData.notes || '-'}
                       </div>
                     </div>
 
-                    {/* Quantity Controls */}
+                    {/* Quantity Controls with Direct Number Input */}
                     <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-100/80 p-1 rounded-xl shrink-0 border border-slate-200/60">
                       <button
                         type="button"
